@@ -50,7 +50,7 @@ export default function Header() {
           type="search"
               />
                         <Button className="max-sm:hidden" color="default">
-                          <ShoppingCart/>
+                          <ShoppingCart width={20} height={20} className=""/>
                           </Button>
               {
                   user?
@@ -96,7 +96,7 @@ export default function Header() {
                   <AcmeLogo/>
               </div>
               <Button color="default">
-                          <ShoppingCart/>
+                  <ShoppingCart width={24} height={24}/>
                           </Button>
         {navLinks.map((el) => (
           <NavbarMenuItem key={el.id}>
