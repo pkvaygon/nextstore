@@ -55,7 +55,7 @@ export default function Header() {
               {
                   user?
               <NavbarItem>
-              <Button color="primary" href="#" variant="flat">
+              <Button  className="bg-zink-500 text-white hover:bg-white hover:text-black active:bg-black active:text-white">
                 Log in
                           </Button>
         </NavbarItem>         

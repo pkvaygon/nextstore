@@ -23,7 +23,7 @@ export default function RootLayout({
           <header>
             <Header/>
           </header>
-          <main>
+          <main className="bg-[#18181B]">
         {children}
           </main>
         </Providers>
