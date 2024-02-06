@@ -1,0 +1,9 @@
+Create Header => {
+Create Link for pages
+pathname === 'catalog' ? SearchInput should shown
+Create Authorization functionality / MongoDB
+Create Auth Modal
+CartPage: {
+UserInfo page
+Cart
+}
