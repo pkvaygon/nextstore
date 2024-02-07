@@ -13,7 +13,7 @@ export default function Header() {
       <NavbarContent className="max-sm:max-w-[27px]" justify="start">
       <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          className="sm:hidden"
+          className="sm:hidden text-white"
         />
         <NavbarBrand className="max-sm:hidden max-sm:max-w-[0px] max-sm:mr-0 mr-4">
           <AcmeLogo />

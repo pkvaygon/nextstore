@@ -17,3 +17,25 @@ export const navLinks: NavLinkProps[] = [
         href: '/faq'
     },
 ]
+export const catalogCards = [
+    {
+        id: 0,
+        label: 'Shoes',
+        image: '',
+    },
+    {
+        id: 1,
+        label: 'Clothing',
+        image: '',
+    },
+    {
+        id: 2,
+        label: 'Pants',
+        image: '',
+    },
+    {
+        id: 3,
+        label: 'Headwear',
+        image: '',
+    },
+]
