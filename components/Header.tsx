@@ -90,7 +90,7 @@ export default function Header() {
                 </>
               :
               <NavbarItem>
-              <Button onPress={onOpen}  className="bg-zink-500 text-white hover:bg-white hover:text-black active:bg-black active:text-white">
+              <Button onClick={onOpen}  className="bg-zink-500 text-white hover:bg-white hover:text-black active:bg-black active:text-white">
                 Log in
               </Button>
         </NavbarItem>    
