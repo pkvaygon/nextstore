@@ -53,12 +53,12 @@ export default function Header() {
           startContent={<SearchIcon size={18} width={18} height={18} />}
           type="search"
               />
+              {
+            user ?
+              <>
                         <Button className="max-sm:hidden" color="default">
                           <ShoppingCart width={20} height={20} className=""/>
                           </Button>
-              {
-                  user?
-               
         <Dropdown className="dark:bg-[#3F3F46] p-0 rounded-lg text-white" placement="bottom-end">
           <DropdownTrigger>
             <Avatar
@@ -86,7 +86,8 @@ export default function Header() {
               Log Out
             </DropdownItem>
           </DropdownMenu>
-        </Dropdown>
+                </Dropdown>
+                </>
               :
               <NavbarItem>
               <Button onPress={onOpen}  className="bg-zink-500 text-white hover:bg-white hover:text-black active:bg-black active:text-white">
@@ -99,7 +100,7 @@ export default function Header() {
               <div className="w-full flex justify-center items-center">
                   <AcmeLogo/>
               </div>
-              <Button color="default">
+              <Button isDisabled={user ? false : true} color="default">
                   <ShoppingCart width={24} height={24}/>
                           </Button>
         {navLinks.map((el) => (
