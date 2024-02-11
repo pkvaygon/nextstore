@@ -1,5 +1,5 @@
 "use client";
-import React, { Key } from "react";
+import React from "react";
 import { Tabs, Tab, Input, Link, Button, Modal, ModalContent } from "@nextui-org/react";
 import SignInTab from "./SignInTab";
 import SignUpTab from "./SignUpTab";
@@ -11,7 +11,7 @@ type ThisModalProps = {
 }
 
 export default function LoginModal({isOpen, onOpen, onOpenChange} : ThisModalProps) {
-  const [selected, setSelected] = React.useState<Key | null | undefined>("login");
+  const [selected, setSelected] = React.useState<React.Key>("login");
   return (
       <div className="flex flex-col w-full">
            <Button onPress={onOpen}>Open Modal</Button>
