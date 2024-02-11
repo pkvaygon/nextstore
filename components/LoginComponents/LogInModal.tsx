@@ -3,7 +3,7 @@ import React from "react";
 import { Tabs, Tab, Input, Link, Button, Modal, ModalContent } from "@nextui-org/react";
 import SignInTab from "./SignInTab";
 import SignUpTab from "./SignUpTab";
-
+import {Key} from '@react-types/shared';
 type ThisModalProps = {
     isOpen: boolean,
     onOpen: () => void,
@@ -11,7 +11,7 @@ type ThisModalProps = {
 }
 
 export default function LoginModal({isOpen, onOpen, onOpenChange} : ThisModalProps) {
-  const [selected, setSelected] = React.useState<React.Key>("login");
+  const [selected, setSelected] = React.useState<Key | null>("login");
   return (
       <div className="flex flex-col w-full">
            <Button onPress={onOpen}>Open Modal</Button>
