@@ -1,14 +1,17 @@
 "use client";
 import React from "react";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem} from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, useDisclosure} from "@nextui-org/react";
 import {AcmeLogo,SearchIcon, ShoppingCart} from "@/svg";
 import { navLinks } from "@/localdata";
 import { usePathname } from 'next/navigation';
+import LoginModal from "./LoginComponents/LogInModal";
 export default function Header() {
     const pathname = usePathname()
+    const {isOpen, onOpen, onOpenChange} = useDisclosure();
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-    const [user, setUser] = React.useState(true)
+  const [user, setUser] = React.useState(true)
   return (
+    <>
     <Navbar className="w-full p-0" position="sticky" isBordered>
       <NavbarContent className="max-sm:max-w-[27px]" justify="start">
       <NavbarMenuToggle
@@ -55,9 +58,9 @@ export default function Header() {
               {
                   user?
               <NavbarItem>
-              <Button  className="bg-zink-500 text-white hover:bg-white hover:text-black active:bg-black active:text-white">
+              <Button onPress={onOpen}  className="bg-zink-500 text-white hover:bg-white hover:text-black active:bg-black active:text-white">
                 Log in
-                          </Button>
+              </Button>
         </NavbarItem>         
             :      
         <Dropdown className="dark:bg-[#3F3F46] p-0 rounded-lg text-white" placement="bottom-end">
@@ -114,5 +117,7 @@ export default function Header() {
         ))}
       </NavbarMenu>
     </Navbar>
+      <LoginModal isOpen={isOpen} onOpen={onOpen} onOpenChange={onOpenChange} />
+    </>
   );
 }
