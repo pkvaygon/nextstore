@@ -4,18 +4,14 @@ import { Tabs, Tab, Input, Link, Button, Modal, ModalContent } from "@nextui-org
 import SignInTab from "./SignInTab";
 import SignUpTab from "./SignUpTab";
 import {Key} from '@react-types/shared';
-type ThisModalProps = {
-    isOpen: boolean,
-    onOpen: () => void,
-    onOpenChange: ()=> void
-}
+import { LoginModalProps } from "@/types";
 
-export default function LoginModal({isOpen, onOpen, onOpenChange} : ThisModalProps) {
+
+export default function LoginModal({isOpen, onOpenChange, onClose} : LoginModalProps) {
   const [selected, setSelected] = React.useState<Key | null>("login");
   return (
       <div className="flex flex-col w-full">
-           <Button onPress={onOpen}>Open Modal</Button>
-      <Modal placement="center" isOpen={isOpen} onOpenChange={onOpenChange} className="max-w-full max-sm:w-full max-sm:h-screen  w-auto h-auto">
+      <Modal backdrop="blur" placement="center" isOpen={isOpen} onOpenChange={onOpenChange} className="max-w-full  w-auto h-auto">
               <ModalContent className="overflow-hidden">
               {(onClose) => (
             <>

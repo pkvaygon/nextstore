@@ -1,39 +1,66 @@
 "use client";
 
-import type {InputProps} from "@nextui-org/react";
-
-import React from "react";
+import React, { FormEvent } from "react";
 import {Button, Input, Checkbox, Link, Divider} from "@nextui-org/react";
-import {Icon} from "@iconify/react";
+import { Icon } from "@iconify/react";
+import { z } from 'zod';
+import { useUser } from "@/providers/Context";
 
 export default function SignInTab() {
-  const [isVisible, setIsVisible] = React.useState(false);
-
-  const toggleVisibility = () => setIsVisible(!isVisible);
-
-//   const inputClasses: InputProps["classNames"] = {
-//     inputWrapper:
-//       "border-transparent bg-default-50/40 dark:bg-default-50/20 group-data-[focus=true]:border-primary data-[hover=true]:border-foreground/20",
-//   };
-
-  const buttonClasses = "bg-foreground/10 dark:bg-foreground/20";
-
+    const buttonClasses = "bg-foreground/10 dark:bg-foreground/20";
+    const {setUser} = useUser()
+    const [isVisible, setIsVisible] = React.useState(false);
+    const toggleVisibility = () => setIsVisible(!isVisible);
+    const [validate, setValidate] = React.useState({ email: '', password: '' })
+    const handleInputChange = (name:string, value: string) => {
+        setValidate((prev) => ({ ...prev, [name]: value }));
+    };
+    const signInSchema = z.object({
+        email: z.string().email(),
+        password: z.string().min(6),
+      });
+    function onSignIn(e: FormEvent<HTMLFormElement>) {
+          e.preventDefault()
+        try {
+            // Валидируем данные с использованием схемы Zod
+            signInSchema.parse(validate);
+            if (signInSchema) {
+                console.log("Sign in successful!");
+                setUser(true)
+            } else {
+            console.log('NOPE')
+            }
+            // Если данные валидны, выполните здесь логику входа
+        } catch (error) {
+            // Если данные не соответствуют схеме, обработайте ошибку
+            if (error instanceof z.ZodError) {
+                console.error("Validation error:", error.errors);
+            } else {
+                console.error("Unexpected error during validation:", error);
+            }
+        }
+    }
     return (
       <>
       <div className="flex w-full max-w-sm flex-col gap-4 rounded-large  px-8 pb-10 pt-6 shadow-small backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50">
-        <form className="flex flex-col gap-3" onSubmit={(e) => e.preventDefault()}>
-                    <Input
-                        className="text-white"
-            // classNames={inputClasses}
+        <form className="flex flex-col gap-3" onSubmit={(e) => onSignIn(e)}>
+            <Input
+            value={validate.email}
+                        onChange={(e) => handleInputChange("email", e.target.value)}
+                        onClear={() => handleInputChange("email", "")}
+            className="text-white"
+            autoComplete="email"
             label="Email Address"
             name="email"
             placeholder="Enter your email"
             type="email"
             variant="bordered"
+            isClearable
           />
-          <Input
-                        // classNames={inputClasses}
-                        className="text-white"
+            <Input
+            value={validate.password}
+            onChange={(e)=> handleInputChange("password", e.target.value)}
+            className="text-white"
             endContent={
               <button type="button" onClick={toggleVisibility}>
                 {isVisible ? (
@@ -51,6 +78,7 @@ export default function SignInTab() {
             }
             label="Password"
             name="password"
+            autoComplete="current-password"
             placeholder="Enter your password"
             type={isVisible ? "text" : "password"}
             variant="bordered"

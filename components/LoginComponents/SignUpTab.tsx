@@ -1,53 +1,82 @@
 "use client";
 
-import type {InputProps} from "@nextui-org/react";
-
-import React from "react";
+import React, { FormEvent } from "react";
 import {Button, Input, Checkbox, Link, Divider} from "@nextui-org/react";
 import {Icon} from "@iconify/react";
-
+import { z } from 'zod';
+import { useUser } from "@/providers/Context";
 export default function SignUpTab() {
+  const { setUser } = useUser()
+  const buttonClasses = "bg-foreground/10 dark:bg-foreground/20";
   const [isVisible, setIsVisible] = React.useState(false);
   const [isConfirmVisible, setIsConfirmVisible] = React.useState(false);
-
   const toggleVisibility = () => setIsVisible(!isVisible);
   const toggleConfirmVisibility = () => setIsConfirmVisible(!isConfirmVisible);
+  const [validate, setValidate] = React.useState({
+    username: '',
+    email: '',
+    password: '',
+    confirm: ''
+  })
+  const signUpSchema = z.object({
+    username: z.string(),
+    email: z.string().email(),
+    password: z.string().min(6),
+    confirm: z.string().min(6)
+  }).required().refine((data) => data.password === data.confirm);
+  const handleInputChange = (name:string, value: string) => {
+    setValidate((prev) => ({ ...prev, [name]: value }));
+}; 
+  function onSignUp(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    console.log("signup form", validate)
+    signUpSchema.parse(validate)
+    setUser(true)
+    if(signUpSchema){
+    console.log('SIGNED UP SUCCESS')
+    } else {
+    console.log('NOOOO', validate)
+    }
+  }
 
-  // const inputClasses: InputProps["classNames"] = {
-  //   inputWrapper:
-  //     "border-transparent bg-default-50/40 dark:bg-default-50/20 group-data-[focus=true]:border-primary data-[hover=true]:border-foreground/20",
-  // };
-
-  const buttonClasses = "bg-foreground/10 dark:bg-foreground/20";
 
   return (
     <>
-      <div className="flex w-full max-w-sm flex-col gap-2 rounded-large px-6 pb-2 pt-2 shadow-small  dark:bg-default-100/50">
-        <form className="flex flex-col gap-2" onSubmit={(e) => e.preventDefault()}>
+      <div className="flex overflow-auto w-full max-w-sm flex-col gap-2 rounded-large px-6 pb-2 pt-2 shadow-small  dark:bg-default-100/50">
+        <form className="flex flex-col gap-2" onSubmit={(e) => onSignUp(e)}>
           <Input
+            value={validate.username}
+            onChange={(e) => handleInputChange("username", e.target.value)}
+            onClear={() => handleInputChange("username", "")}
             isRequired
             className="text-white"
-            // classNames={inputClasses}
             label="Username"
             name="username"
             placeholder="Enter your username"
             type="text"
             variant="bordered"
+            autoComplete="username"
+            isClearable
           />
           <Input
+            value={validate.email}
+            onChange={(e) => handleInputChange("email", e.target.value)}
+            onClear={() => handleInputChange("email", "")}
             isRequired
             className="text-white"
-            // classNames={inputClasses}
             label="Email Address"
             name="email"
             placeholder="Enter your email"
             type="email"
             variant="bordered"
+            autoComplete="email"
+            isClearable
           />
           <Input
+            value={validate.password}
+            onChange={(e) => handleInputChange("password", e.target.value)}
             isRequired
             className="text-white"
-            // classNames={inputClasses}
             endContent={
               <button type="button" onClick={toggleVisibility}>
                 {isVisible ? (
@@ -68,11 +97,14 @@ export default function SignUpTab() {
             placeholder="Enter your password"
             type={isVisible ? "text" : "password"}
             variant="bordered"
+            autoComplete="new-password"
           />
           <Input
+            value={validate.confirm}
+            onChange={(e)=> handleInputChange("confirm", e.target.value)}
             isRequired
+            autoComplete="new-password"
             className="text-white"
-            // classNames={inputClasses}
             endContent={
               <button type="button" onClick={toggleConfirmVisibility}>
                 {isConfirmVisible ? (

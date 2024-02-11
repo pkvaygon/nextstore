@@ -5,16 +5,17 @@ import {AcmeLogo,SearchIcon, ShoppingCart} from "@/svg";
 import { navLinks } from "@/localdata";
 import { usePathname } from 'next/navigation';
 import LoginModal from "./LoginComponents/LogInModal";
+import { useUser } from "@/providers/Context";
 export default function Header() {
     const pathname = usePathname()
-    const {isOpen, onOpen, onOpenChange} = useDisclosure();
+    const {isOpen, onOpen, onOpenChange, onClose} = useDisclosure();
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const [user, setUser] = React.useState(true)
+  const { user,setUser } = useUser();
   return (
     <>
     <Navbar className="w-full p-0" position="sticky" isBordered>
       <NavbarContent className="max-sm:max-w-[27px]" justify="start">
-      <NavbarMenuToggle
+          <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden text-white"
         />
@@ -57,12 +58,7 @@ export default function Header() {
                           </Button>
               {
                   user?
-              <NavbarItem>
-              <Button onPress={onOpen}  className="bg-zink-500 text-white hover:bg-white hover:text-black active:bg-black active:text-white">
-                Log in
-              </Button>
-        </NavbarItem>         
-            :      
+               
         <Dropdown className="dark:bg-[#3F3F46] p-0 rounded-lg text-white" placement="bottom-end">
           <DropdownTrigger>
             <Avatar
@@ -86,14 +82,19 @@ export default function Header() {
             <DropdownItem key="system">System</DropdownItem>
             <DropdownItem key="configurations">Configurations</DropdownItem>
             <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-            <DropdownItem className="hover:text-white" key="logout" color="danger">
+            <DropdownItem onClick={()=> setUser(false)}  className="hover:text-white" key="logout" color="danger">
               Log Out
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
+              :
+              <NavbarItem>
+              <Button onPress={onOpen}  className="bg-zink-500 text-white hover:bg-white hover:text-black active:bg-black active:text-white">
+                Log in
+              </Button>
+        </NavbarItem>    
               }
           </NavbarContent>
-
           <NavbarMenu>
               <div className="w-full flex justify-center items-center">
                   <AcmeLogo/>
@@ -116,8 +117,11 @@ export default function Header() {
           </NavbarMenuItem>
         ))}
       </NavbarMenu>
-    </Navbar>
-      <LoginModal isOpen={isOpen} onOpen={onOpen} onOpenChange={onOpenChange} />
+      </Navbar>
+      {
+      user ? <></> :
+      <LoginModal onClose={onClose} isOpen={isOpen} onOpenChange={onOpenChange} />
+      }
     </>
   );
 }

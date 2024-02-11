@@ -21,4 +21,10 @@ export type ProductItem = {
 export type ProductListItemColor = {
     name: string;
     hex: string;
-  };
+};
+export type LoginModalProps = {
+    isOpen: boolean,
+    onClose: ()=> void,
+    onOpen?: () => void,
+    onOpenChange?: ()=> void
+}
