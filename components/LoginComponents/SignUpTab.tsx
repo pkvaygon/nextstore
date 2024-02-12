@@ -52,8 +52,9 @@ function onSignUp(e: FormEvent<HTMLFormElement>) {
   return (
     <>
       <div className="flex overflow-auto w-full max-w-sm flex-col gap-2 rounded-large px-6 pb-2 pt-2 shadow-small  dark:bg-default-100/50">
-        <form className="flex flex-col gap-2" onSubmit={(e) => onSignUp(e)}>
+        <form autoSave="yes" autoComplete="on" className="flex flex-col gap-2" onSubmit={(e) => onSignUp(e)}>
           <Input
+            autoFocus={false}
              isInvalid={!!inValid.username?._errors.length}
              errorMessage={inValid.username?._errors[0] || ""}
             value={validate.username}

@@ -41,8 +41,9 @@ console.log(error)
     return (
       <>
       <div className="flex w-full max-w-sm flex-col gap-4 rounded-large  px-8 pb-10 pt-6 shadow-small backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50">
-        <form className="flex flex-col gap-3" onSubmit={(e) => onSignIn(e)}>
+        <form autoSave="yes" autoComplete="on" className="flex flex-col gap-3" onSubmit={(e) => onSignIn(e)}>
             <Input
+              autoFocus={false}
                isInvalid={!!inValid.email?._errors.length}
                errorMessage={inValid.email?._errors[0] || ""}
             value={validate.email}
