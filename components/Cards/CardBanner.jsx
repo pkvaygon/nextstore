@@ -19,9 +19,9 @@ export default function CardBanner(props) {
           animate="visible"
           variants={cardVariants}
           transition={{ duration: 0.8 }}
-          className="max-w-xs"
+          className="w-auto"
         >
-          <Card className="w-full max-sm:max-w-xs" {...props}>
+          <Card className="w-full col-span-full" {...props}>
             <CardBody className="px-3 pb-1">
               <Image
                 alt="Card image"
