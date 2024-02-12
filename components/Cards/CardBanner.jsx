@@ -3,15 +3,11 @@ import React from "react";
 import { Card, Image, CardBody, CardFooter, Button, Spacer } from "@nextui-org/react";
 import { motion } from 'framer-motion';
 import { bannerCatalog } from "@/localdata";
+import { cardVariants } from "@/framermotion";
 
 export default function CardBanner(props) {
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
-
   return (
-    <article className="w-full h-full pt-8 grid max-sm:grid-cols-1 grid-cols-2 grid-flow-row gap-4">
+    <article className="w-full h-full pt-8 grid  grid-cols-2 grid-flow-row gap-4">
       {bannerCatalog.map((el) => (
         <motion.div
           key={el.id}
@@ -29,12 +25,12 @@ export default function CardBanner(props) {
                 src={el.image}
               />
               <Spacer y={2} />
-              <div className="flex flex-col gap-2 px-2">
-                <p className="max-sm:text-base text-large font-medium">{el.label}</p>
-                <p className=" max-sm:text-xs text-small text-default-400">{el.description}</p>
+              <div className="flex flex-col max-sm:gap-1 gap-2 px-2">
+                <p className="max-sm:text-xs text-large font-medium">{el.label}</p>
+                <p className="max-sm:leading-none max-sm:text-[8px] text-small text-default-400">{el.description}</p>
               </div>
             </CardBody>
-            <CardFooter className="justify-end gap-2">
+            <CardFooter className="justify-end">
               <Button fullWidth>See catalog</Button>
             </CardFooter>
           </Card>

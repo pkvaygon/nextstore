@@ -23,10 +23,10 @@ export default function LoginModal({isOpen, onOpenChange, onClose} : LoginModalP
             selectedKey={selected}
             onSelectionChange={setSelected}
           >
-            <Tab className="flex justify-center items-center" key="login" title="Login">
+            <Tab className="flex justify-center items-center" key="login" title="Sign In">
               <SignInTab/>
             </Tab>
-            <Tab className="flex  justify-center items-center" key="sign-up" title="Sign up">
+            <Tab className="flex  justify-center items-center" key="sign-up" title="Sign Up">
               <SignUpTab/>
             </Tab>
           </Tabs>

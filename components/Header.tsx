@@ -106,9 +106,7 @@ export default function Header() {
         {navLinks.map((el) => (
           <NavbarMenuItem key={el.id}>
             <Link
-              color={
-               el.id === 2 ? "primary" :el.id === navLinks.length - 1 ? "danger" : "foreground"
-              }
+              color={"foreground"}
               className="w-full"
               href={el.href}
               size="lg"

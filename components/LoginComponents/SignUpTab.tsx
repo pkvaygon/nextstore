@@ -113,7 +113,7 @@ function onSignUp(e: FormEvent<HTMLFormElement>) {
             placeholder="Enter minimum 6 characters"
             type={isVisible ? "text" : "password"}
             variant="bordered"
-            autoComplete="new-password"
+            // autoComplete="new-password"
           />
           <Input
              isInvalid={!!inValid.confirm?._errors.length}
@@ -121,7 +121,7 @@ function onSignUp(e: FormEvent<HTMLFormElement>) {
             value={validate.confirm}
             onChange={(e)=> handleInputChange("confirm", e.target.value)}
             isRequired
-            autoComplete="new-password"
+            // autoComplete="new-password"
             className="text-white"
             endContent={
               <button type="button" onClick={toggleConfirmVisibility}>
