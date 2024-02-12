@@ -61,7 +61,7 @@ export default function Header() {
                           </Button>
         <Dropdown className="dark:bg-[#3F3F46] p-0 rounded-lg text-white" placement="bottom-end">
           <DropdownTrigger>
-            <Avatar
+                    <Avatar
               isBordered
               as="button"
               className="transition-transform"
@@ -72,17 +72,17 @@ export default function Header() {
             />
           </DropdownTrigger>
           <DropdownMenu className="bg-[#27272A] rounded-lg" aria-label="Profile Actions" variant="flat">
-            <DropdownItem key="profile" className="h-14 gap-2">
+            <DropdownItem textValue="profile" key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
               <p className="font-semibold">zoey@example.com</p>
             </DropdownItem>
-            <DropdownItem key="settings">My Settings</DropdownItem>
-            <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="analytics">Analytics</DropdownItem>
-            <DropdownItem key="system">System</DropdownItem>
-            <DropdownItem key="configurations">Configurations</DropdownItem>
-            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-            <DropdownItem onClick={()=> setUser(false)}  className="hover:text-white" key="logout" color="danger">
+            <DropdownItem textValue="settings" key="settings">My Settings</DropdownItem>
+            <DropdownItem textValue="team_settings" key="team_settings">Team Settings</DropdownItem>
+            <DropdownItem textValue="analytics" key="analytics">Analytics</DropdownItem>
+            <DropdownItem textValue="system" key="system">System</DropdownItem>
+            <DropdownItem textValue="configurations" key="configurations">Configurations</DropdownItem>
+            <DropdownItem textValue="help_and_feedback" key="help_and_feedback">Help & Feedback</DropdownItem>
+            <DropdownItem textValue="logout" onClick={()=> setUser(false)}  className="hover:text-white" key="logout" color="danger">
               Log Out
             </DropdownItem>
           </DropdownMenu>

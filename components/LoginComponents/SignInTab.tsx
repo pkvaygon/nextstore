@@ -11,33 +11,33 @@ export default function SignInTab() {
     const {setUser} = useUser()
     const [isVisible, setIsVisible] = React.useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
-    const [validate, setValidate] = React.useState({ email: '', password: '' })
+  const [validate, setValidate] = React.useState({ email: '', password: '' })
+  const [inValid, setInValid] = React.useState<z.ZodFormattedError<{
+    email: string;
+    password: string;
+}, string>>({_errors: []})
     const handleInputChange = (name:string, value: string) => {
-        setValidate((prev) => ({ ...prev, [name]: value }));
+      setValidate((prev) => ({ ...prev, [name]: value }));
+      setInValid({_errors: []});
     };
     const signInSchema = z.object({
-        email: z.string().email(),
-        password: z.string().min(6),
+        email: z.string().email({message: 'Invalid email format'}),
+        password: z.string().min(6,{message: "password is not correct"}),
       });
     function onSignIn(e: FormEvent<HTMLFormElement>) {
           e.preventDefault()
         try {
-            // Валидируем данные с использованием схемы Zod
-            signInSchema.parse(validate);
-            if (signInSchema) {
-                console.log("Sign in successful!");
+           const isValid = signInSchema.safeParse(validate);
+            if (!isValid.success) {
+              const inValid = isValid.error.format()
+              setInValid(inValid)
+              console.log(inValid)
+            } else {
+              setInValid({_errors: []});
                 setUser(true)
-            } else {
-            console.log('NOPE')
             }
-            // Если данные валидны, выполните здесь логику входа
         } catch (error) {
-            // Если данные не соответствуют схеме, обработайте ошибку
-            if (error instanceof z.ZodError) {
-                console.error("Validation error:", error.errors);
-            } else {
-                console.error("Unexpected error during validation:", error);
-            }
+console.log(error)
         }
     }
     return (
@@ -45,9 +45,11 @@ export default function SignInTab() {
       <div className="flex w-full max-w-sm flex-col gap-4 rounded-large  px-8 pb-10 pt-6 shadow-small backdrop-blur-md backdrop-saturate-150 dark:bg-default-100/50">
         <form className="flex flex-col gap-3" onSubmit={(e) => onSignIn(e)}>
             <Input
+               isInvalid={!!inValid.email?._errors.length}
+               errorMessage={inValid.email?._errors[0] || ""}
             value={validate.email}
-                        onChange={(e) => handleInputChange("email", e.target.value)}
-                        onClear={() => handleInputChange("email", "")}
+            onChange={(e) => handleInputChange("email", e.target.value)}
+            onClear={() => handleInputChange("email", "")}
             className="text-white"
             autoComplete="email"
             label="Email Address"
@@ -56,14 +58,18 @@ export default function SignInTab() {
             type="email"
             variant="bordered"
             isClearable
+            isRequired
           />
             <Input
+            isRequired
+            isInvalid={!!inValid.password?._errors.length}
+               errorMessage={inValid.password?._errors[0] || ""}
             value={validate.password}
             onChange={(e)=> handleInputChange("password", e.target.value)}
             className="text-white"
             endContent={
-              <button type="button" onClick={toggleVisibility}>
-                {isVisible ? (
+            <button type="button" onClick={toggleVisibility}>
+              {isVisible ? (
                   <Icon
                     className="pointer-events-none text-2xl text-foreground/50"
                     icon="solar:eye-closed-linear"
@@ -74,7 +80,7 @@ export default function SignInTab() {
                     icon="solar:eye-bold"
                   />
                 )}
-              </button>
+            </button>
             }
             label="Password"
             name="password"
