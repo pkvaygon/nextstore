@@ -1,10 +1,11 @@
 "use client";
 
 import React, { FormEvent } from "react";
-import {Button, Input, Checkbox, Link, Divider} from "@nextui-org/react";
+import {Button, Input, Checkbox, Link, Divider, Chip} from "@nextui-org/react";
 import {Icon} from "@iconify/react";
-import { z } from 'zod';
 import { useUser } from "@/providers/Context";
+import { z } from "zod";
+import { signUpSchema } from "@/zodValidation";
 export default function SignUpTab() {
   const { setUser } = useUser()
   const buttonClasses = "bg-foreground/10 dark:bg-foreground/20";
@@ -24,12 +25,7 @@ export default function SignUpTab() {
     password: string;
     confirm: string;
 }, string>>({_errors: []})
-  const signUpSchema = z.object({
-    username: z.string(),
-    email: z.string().email("email!!!!"),
-    password: z.string().min(6),
-    confirm: z.string().min(6)
-  }).required().refine((data) => data.password === data.confirm);
+ 
   const handleInputChange = (name:string, value: string) => {
     setValidate((prev) => ({ ...prev, [name]: value }));
     setInValid({_errors: []});
@@ -41,14 +37,14 @@ function onSignUp(e: FormEvent<HTMLFormElement>) {
     if (!isValid.success) {
       const inValid = isValid.error.format()
       setInValid(inValid)
-      console.log(inValid)
+      console.log('inValid',inValid)
     } else {
       setInValid({_errors: []});
       setUser(true)
       console.log('SUCCESS')
     }
   } catch (error) {
-    console.error(error);
+    console.error('catch',error);
   }
 }
 
@@ -113,7 +109,7 @@ function onSignUp(e: FormEvent<HTMLFormElement>) {
             }
             label="Password"
             name="password"
-            placeholder="Enter your password"
+            placeholder="Enter minimum 6 characters"
             type={isVisible ? "text" : "password"}
             variant="bordered"
             autoComplete="new-password"
@@ -147,6 +143,9 @@ function onSignUp(e: FormEvent<HTMLFormElement>) {
             type={isConfirmVisible ? "text" : "password"}
             variant="bordered"
           />
+          {
+            inValid._errors ? <Chip variant="light" className="w-full" color="danger">{inValid._errors}</Chip> : null
+          }
           <Checkbox
             isRequired
             classNames={{

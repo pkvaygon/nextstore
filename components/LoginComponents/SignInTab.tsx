@@ -5,6 +5,7 @@ import {Button, Input, Checkbox, Link, Divider} from "@nextui-org/react";
 import { Icon } from "@iconify/react";
 import { z } from 'zod';
 import { useUser } from "@/providers/Context";
+import { signInSchema } from "@/zodValidation";
 
 export default function SignInTab() {
     const buttonClasses = "bg-foreground/10 dark:bg-foreground/20";
@@ -20,10 +21,7 @@ export default function SignInTab() {
       setValidate((prev) => ({ ...prev, [name]: value }));
       setInValid({_errors: []});
     };
-    const signInSchema = z.object({
-        email: z.string().email({message: 'Invalid email format'}),
-        password: z.string().min(6,{message: "password is not correct"}),
-      });
+   
     function onSignIn(e: FormEvent<HTMLFormElement>) {
           e.preventDefault()
         try {
