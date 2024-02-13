@@ -21,7 +21,7 @@ export const authConfig = {
         username: {label: 'username', type: "text", placeholder: "enter your username"},
       email: {label: "email", type:"email", placeholder: "enter your email"},
        password: { label: "password", type: "password", placeholder: "******" },
-      actions: 'signup'
+      actions: ''
      },
      async authorize(credentials) {
        const { action } = credentials;
