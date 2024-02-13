@@ -1,18 +1,18 @@
 "use client";
 
 import React, { FormEvent } from "react";
-import {Button, Input, Checkbox, Link, Divider} from "@nextui-org/react";
+import {Button, Input, Checkbox, Link, Divider, Chip} from "@nextui-org/react";
 import { Icon } from "@iconify/react";
 import { z } from 'zod';
-import { useUser } from "@/providers/Context";
 import { signInSchema } from "@/zodValidation";
+import { signIn } from "next-auth/react";
+
 
 export default function SignInTab() {
-    const buttonClasses = "bg-foreground/10 dark:bg-foreground/20";
-    const {setUser} = useUser()
     const [isVisible, setIsVisible] = React.useState(false);
     const toggleVisibility = () => setIsVisible(!isVisible);
   const [validate, setValidate] = React.useState({ email: '', password: '' })
+  const [rememberMe, setRememberMe] = React.useState<boolean>(false)
   const [inValid, setInValid] = React.useState<z.ZodFormattedError<{
     email: string;
     password: string;
@@ -21,9 +21,8 @@ export default function SignInTab() {
       setValidate((prev) => ({ ...prev, [name]: value }));
       setInValid({_errors: []});
     };
-   
-    function onSignIn(e: FormEvent<HTMLFormElement>) {
-          e.preventDefault()
+async function onSignIn(e: FormEvent<HTMLFormElement>) {
+      e.preventDefault()
         try {
            const isValid = signInSchema.safeParse(validate);
             if (!isValid.success) {
@@ -31,8 +30,22 @@ export default function SignInTab() {
               setInValid(inValid)
               console.log(inValid)
             } else {
-              setInValid({_errors: []});
-                setUser(true)
+              if (rememberMe) {
+                localStorage.setItem('rememberMe', JSON.stringify(isValid.success))
+              } else {
+                localStorage.removeItem('rememberMe')
+              }
+              const signInError = await signIn('credentials', {
+                email: validate.email,
+                password: validate.password,
+                redirect: false,
+                action: 'signin'
+              })
+              if (signInError?.ok) {
+                setInValid({ _errors: [] });
+              } else if (signInError?.error) {
+              setInValid({_errors: ["incorrect email or password"]})
+              }
             }
         } catch (error) {
 console.log(error)
@@ -87,9 +100,14 @@ console.log(error)
             placeholder="Enter your password"
             type={isVisible ? "text" : "password"}
             variant="bordered"
-          />
+            />
+             {
+            inValid._errors ? <Chip variant="light" className="w-full" color="danger">{inValid._errors[0]}</Chip> : null
+          }
           <div className="flex items-center justify-between px-1 py-2">
-            <Checkbox
+              <Checkbox
+                isSelected={rememberMe}
+                onChange={(e)=> setRememberMe(e.target.checked)}
               classNames={{
                 wrapper: "before:border-foreground/50",
               }}
@@ -102,7 +120,7 @@ console.log(error)
               Forgot password?
             </Link>
           </div>
-          <Button className={buttonClasses} type="submit">
+          <Button className="bg-foreground/10 dark:bg-foreground/20" type="submit">
             Log In
           </Button>
         </form>
@@ -112,7 +130,7 @@ console.log(error)
           <Divider className="flex-1" />
         </div>
         <div className="flex flex-col gap-2">
-          <Button className={buttonClasses} startContent={<Icon icon="fe:google" width={24} />}>
+          <Button onClick={()=> signIn('google')} className="bg-foreground/10 dark:bg-foreground/20" startContent={<Icon icon="fe:google" width={24} />}>
             Continue with Google
           </Button>
         </div>

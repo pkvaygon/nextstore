@@ -47,7 +47,7 @@ export const bannerCatalog = [
         id: 0,
         key: "shoes",
         image: "https://sneakerbardetroit.com/wp-content/uploads/2015/08/under-armour-curry-one-black-gold-banner-release-date.jpg",
-        label: "Shoes collection",
+        label: "Shoes",
         description: "Lorem ipsum dolor sit amet consectetur."
     },
     {

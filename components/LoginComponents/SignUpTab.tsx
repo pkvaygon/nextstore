@@ -3,16 +3,17 @@
 import React, { FormEvent } from "react";
 import {Button, Input, Checkbox, Link, Divider, Chip} from "@nextui-org/react";
 import {Icon} from "@iconify/react";
-import { useUser } from "@/providers/Context";
 import { z } from "zod";
 import { signUpSchema } from "@/zodValidation";
+import { signIn } from "next-auth/react";
+import { useUser } from "@/providers/Context";
 export default function SignUpTab() {
-  const { setUser } = useUser()
   const buttonClasses = "bg-foreground/10 dark:bg-foreground/20";
   const [isVisible, setIsVisible] = React.useState(false);
   const [isConfirmVisible, setIsConfirmVisible] = React.useState(false);
   const toggleVisibility = () => setIsVisible(!isVisible);
   const toggleConfirmVisibility = () => setIsConfirmVisible(!isConfirmVisible);
+  const {setUser} = useUser()
   const [validate, setValidate] = React.useState({
     username: '',
     email: '',
@@ -30,7 +31,7 @@ export default function SignUpTab() {
     setValidate((prev) => ({ ...prev, [name]: value }));
     setInValid({_errors: []});
 }; 
-function onSignUp(e: FormEvent<HTMLFormElement>) {
+async function onSignUp(e: FormEvent<HTMLFormElement>) {
   e.preventDefault();
   try {
     const isValid = signUpSchema.safeParse(validate);
@@ -39,9 +40,14 @@ function onSignUp(e: FormEvent<HTMLFormElement>) {
       setInValid(inValid)
       console.log('inValid',inValid)
     } else {
-      setInValid({_errors: []});
-      setUser(true)
-      console.log('SUCCESS')
+      setInValid({ _errors: [] });
+     await signIn('credentials', {
+        email: validate.email,
+        password: validate.password,
+        username: validate.username,
+       redirect: false,
+        action: 'signup'
+      })
     }
   } catch (error) {
     console.error('catch',error);
@@ -113,7 +119,7 @@ function onSignUp(e: FormEvent<HTMLFormElement>) {
             placeholder="Enter minimum 6 characters"
             type={isVisible ? "text" : "password"}
             variant="bordered"
-            // autoComplete="new-password"
+            autoComplete="current-password"
           />
           <Input
              isInvalid={!!inValid.confirm?._errors.length}
@@ -121,7 +127,7 @@ function onSignUp(e: FormEvent<HTMLFormElement>) {
             value={validate.confirm}
             onChange={(e)=> handleInputChange("confirm", e.target.value)}
             isRequired
-            // autoComplete="new-password"
+            autoComplete="current-password"
             className="text-white"
             endContent={
               <button type="button" onClick={toggleConfirmVisibility}>
@@ -175,7 +181,7 @@ function onSignUp(e: FormEvent<HTMLFormElement>) {
           <Divider className="flex-1" />
         </div>
         <div className="flex flex-col gap-2">
-          <Button className={buttonClasses} startContent={<Icon icon="fe:google" width={24} />}>
+          <Button onClick={()=> signIn('google')} className={buttonClasses} startContent={<Icon icon="fe:google" width={24} />}>
             Continue with Google
           </Button>
         </div>

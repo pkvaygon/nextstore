@@ -11,5 +11,5 @@ message: "passwords does not match"
   
 export const signInSchema = z.object({
     email: z.string().email({message: 'Invalid email format'}),
-    password: z.string().min(6,{message: "password is not correct"}),
+    password: z.string().min(6, { message: "password is not correct" }),
   });

@@ -6,11 +6,22 @@ import { navLinks } from "@/localdata";
 import { usePathname } from 'next/navigation';
 import LoginModal from "./LoginComponents/LogInModal";
 import { useUser } from "@/providers/Context";
+import {signOut, useSession } from "next-auth/react";
 export default function Header() {
     const pathname = usePathname()
+    const { user, setUser } = useUser();
+  const { data: session } = useSession();
+  React.useEffect(() => {
+    if(session){
+    setUser(true)
+    }
+  console.log(session)
+  }, [session,setUser])
+  
     const {isOpen, onOpen, onOpenChange, onClose} = useDisclosure();
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  const { user,setUser } = useUser();
+  
+
   return (
     <>
     <Navbar className="w-full p-0" position="sticky" isBordered>
@@ -54,7 +65,7 @@ export default function Header() {
           type="search"
               />
               {
-            user ?
+            session?.user ?
               <>
                         <Button className="max-sm:hidden" color="default">
                           <ShoppingCart width={20} height={20} className=""/>
@@ -68,13 +79,13 @@ export default function Header() {
               color="secondary"
               name="Jason Hughes"
               size="sm"
-              src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+              src={session?.user?.image}
             />
           </DropdownTrigger>
           <DropdownMenu className="bg-[#27272A] rounded-lg" aria-label="Profile Actions" variant="flat">
             <DropdownItem textValue="profile" key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
+                      <p className="font-semibold">{session?.user?.email}</p>
             </DropdownItem>
             <DropdownItem textValue="settings" key="settings">My Settings</DropdownItem>
             <DropdownItem textValue="team_settings" key="team_settings">Team Settings</DropdownItem>
@@ -82,7 +93,7 @@ export default function Header() {
             <DropdownItem textValue="system" key="system">System</DropdownItem>
             <DropdownItem textValue="configurations" key="configurations">Configurations</DropdownItem>
             <DropdownItem textValue="help_and_feedback" key="help_and_feedback">Help & Feedback</DropdownItem>
-            <DropdownItem textValue="logout" onClick={()=> setUser(false)}  className="hover:text-white" key="logout" color="danger">
+                    <DropdownItem textValue="logout" onClick={() => signOut()}  className="hover:text-white" key="logout" color="danger">
               Log Out
             </DropdownItem>
           </DropdownMenu>
