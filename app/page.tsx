@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import CardBanner from './../components/Cards/CardBanner';
+import { connectToDatabase } from "@/actions";
 
-export default function Home() {
+export default async function Home() {
+const koko = await connectToDatabase()
+console.log(koko)
   return (
     <section>
       <div className='w-full h-screen relative'>

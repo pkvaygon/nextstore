@@ -23,10 +23,8 @@ function scaleValue(value: number, fromRange: RangeValue, toRange: RangeValue = 
   const [fromMin, fromMax] = fromRange;
   const [toMin, toMax] = toRange;
 
-  // Scaling factor to map the value from one range to another
   const scale = (toMax - toMin) / (fromMax - fromMin);
 
-  // Applying the scaling factor to the value and adjusting by the minimum of the target range
   return (value - fromMin) * scale + toMin;
 }
 

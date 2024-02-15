@@ -4,12 +4,15 @@ import React from "react";
 import { Icon } from '@iconify/react';
 import SidebarDrawer from "@/components/shop/SidebarDrawer";
 import FilterWrapper from "@/components/shop/FilterWrapper";
+import ShopCards from "@/components/shop/ProductSection/ShopCards";
 
-export default function Shop() {
+
+export default  function Shop() {
+
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [isHidden, setIsHidden] = React.useState(false);
   return (
-    <div className="w-full h-dvh px-2 lg:px-6">
+    <div className="w-full h-auto px-2 lg:px-6">
     <div className="flex gap-x-6">
       <SidebarDrawer isOpen={isOpen} onOpenChange={onOpenChange}>
         <FilterWrapper/>
@@ -75,8 +78,8 @@ export default function Shop() {
           </div>
         </section>
         <section className="mt-4 h-auto w-full px-1">
-          <div className="block rounded-medium border-medium border-dashed border-divider">
-            {/* Put your content here */}
+          <div className="block  rounded-medium border-medium border-dashed border-divider">
+            <ShopCards/>
           </div>
         </section>
       </div>

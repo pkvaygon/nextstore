@@ -6,9 +6,9 @@ export default function FilterWrapper() {
 
     return (
         <>
-        <div className="my-auto flex flex-col gap-2">
+        <div className=" flex flex-col gap-2">
       <h3 className="text-medium font-medium leading-8 text-default-600">Price Range</h3>
-      <PriceSlider
+          <PriceSlider
         aria-label="Pricing Filter"
         range={{
           min: 0,
@@ -16,7 +16,6 @@ export default function FilterWrapper() {
           max: 1000,
           step: 1,
         }}
-        className="glassmorphism"
       />
     </div>
     
