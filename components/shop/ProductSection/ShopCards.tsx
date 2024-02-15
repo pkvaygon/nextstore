@@ -26,7 +26,7 @@ export default function ShopCards() {
                   price={product.price}
                   description={product.description}
                   colors={product.colors}
-                  rating={Math.floor(Math.random() * 5) < 4 ? 4 : 5}
+                  rating={product.rating}
                 />
           ))}
             </ScrollShadow>
