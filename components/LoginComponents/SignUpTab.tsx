@@ -29,7 +29,8 @@ export default function SignUpTab() {
  const [existingUser, setExistingUser] = React.useState<string | null>('')
   const handleInputChange = (name:string, value: string) => {
     setValidate((prev) => ({ ...prev, [name]: value }));
-    setInValid({_errors: []});
+    setInValid({ _errors: [] });
+    setExistingUser(null)
 }; 
 async function onSignUp(e: FormEvent<HTMLFormElement>) {
   e.preventDefault();
