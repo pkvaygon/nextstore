@@ -1,0 +1,101 @@
+{
+    "label": "Unisex Curry Flow",
+    "description": "Change directions—fast. UA Flow cushioning is totally rubberless, making these shoes light and ridiculously grippy. The UA Warp upper works like mini seat belts locking you in. Together, you get stop and go speed + control.",
+    "style": "sport",
+    "lace_type": "Standard tie",
+    "info": [
+      "UA WARP upper technology provides enhanced comfort & control throughout dynamic basketball movements",
+      "Half-bootie upper lining for superior fit, comfort & lockdown",
+      "TPE-blend sockliner with low compression set for energy return & longevity",
+      "UA Flow cushioning technology is super-light, bouncy & provides insane grip",
+      "Internal midfoot shank adds support & stability to every move",
+      "Durable UA Flow outsole provides better court feel so you can cut & stop/start faster than ever before"
+    ],
+    "sizes": ["35", "36", "37", "39", "40", "41", "42", "43"],
+    "price": 160.00,
+    "old_price": 192.00,
+    "in_stock": true,
+    "gender": "unisex",
+    "category": "shoes",
+    "brand": "Under Armour",
+    "rating": [],
+    "reviews": [],
+    "colors": [
+      {
+        "color": "Black",
+        "color2": "White",
+        "hex": "#000000",
+        "hex2": "#FFFFFF",
+        "images": {
+          "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707886423/nextstore/shoes/shoe1/3026624-001_DEFAULT_mpykoo.jpg",
+          "additional": [
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707886455/nextstore/shoes/shoe1/3026624-001_A_mtvccc.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707886481/nextstore/shoes/shoe1/3026624-001_PAIR_iwpltz.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707886468/nextstore/shoes/shoe1/3026624-001_TOE_nwuq3m.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707886497/nextstore/shoes/shoe1/3026624-001_SOLE_h7c25r.jpg"
+          ]
+        }
+      },
+      {
+        "color": "White",
+        "color2": "Black",
+        "hex": "#000000",
+        "hex2": "#FFFFFF",
+        "images": {
+          "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707888272/nextstore/shoes/shoe1/whiteblack/3026624-100_DEFAULT_dpymip.jpg",
+          "additional": [
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707888227/nextstore/shoes/shoe1/whiteblack/3026624-100_A_hhfdkt.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707888309/nextstore/shoes/shoe1/whiteblack/3026624-100_PAIR_dcgk48.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707888288/nextstore/shoes/shoe1/whiteblack/3026624-100_TOE_lw0dy9.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707888355/nextstore/shoes/shoe1/whiteblack/3026624-100_SOLE_m8ec39.jpg"
+          ]
+        }
+      },
+      {
+        "color": "Pitch Gray",
+        "color2": "White",
+        "hex": "#818288",
+        "hex2": "#ffffff",
+        "images": {
+          "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889126/nextstore/shoes/shoe1/pitchgraywhite/3026624-101_DEFAULT_jstz0k.jpg",
+          "additional": [
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889143/nextstore/shoes/shoe1/pitchgraywhite/3026624-101_A_saza68.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889174/nextstore/shoes/shoe1/pitchgraywhite/3026624-101_PAIR_wfifrj.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889156/nextstore/shoes/shoe1/pitchgraywhite/3026624-101_TOE_e2wq2j.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889179/nextstore/shoes/shoe1/pitchgraywhite/3026624-101_SOLE_nuq6lb.jpg"
+          ]
+        }
+      },
+      {
+        "color": "Midnight Navy",
+        "color2": "White",
+        "hex": "#292949",
+        "hex2": "#ffffff",
+        "images": {
+          "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889433/nextstore/shoes/shoe1/midnightnavywhite/3026624-400_DEFAULT_f7yjhm.jpg",
+          "additional": [
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889453/nextstore/shoes/shoe1/midnightnavywhite/3026624-400_A_kwfdyr.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889489/nextstore/shoes/shoe1/midnightnavywhite/3026624-400_PAIR_bkdqir.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889469/nextstore/shoes/shoe1/midnightnavywhite/3026624-400_TOE_ns6yvx.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889496/nextstore/shoes/shoe1/midnightnavywhite/3026624-400_SOLE_dtmz6e.jpg"
+          ]
+        }
+      },
+      {
+        "color": "Team Royal",
+        "color2": "White",
+        "hex": "#3e57a7",
+        "hex2": "#ffffff",
+        "images": {
+          "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889682/nextstore/shoes/shoe1/teamroyalwhite/3026624-401_DEFAULT_qfp18d.jpg",
+          "additional": [
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889696/nextstore/shoes/shoe1/teamroyalwhite/3026624-401_A_pxmoom.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889717/nextstore/shoes/shoe1/teamroyalwhite/3026624-401_PAIR_ztltlv.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889705/nextstore/shoes/shoe1/teamroyalwhite/3026624-401_TOE_w0pb46.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707889721/nextstore/shoes/shoe1/teamroyalwhite/3026624-401_SOLE_snvqcs.jpg"
+          ]
+        }
+      }
+    ]
+  }
+

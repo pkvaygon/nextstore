@@ -1,0 +1,101 @@
+{
+    "label": "Unisex Curry 3Z7",
+    "description": "These are the shoes you're going to go back to again and again, all season long. A durable rubber outsole, leather overlays, and lock-down webbed lacing make them tough enough to keep up with every cut, drag, and drive.",
+    "style": "sport",
+    "lace_type": "Standard tie",
+    "info": [
+      "Super-comfortable upper with mix of leather & mesh for durability & breathability where you need it",
+      "Plush foam sockliner for increased underfoot comfort",
+      "Full-length Micro G® midsole turns cushioned landings into explosive takeoffs",
+      "Internal shank provides midfoot stability",
+      "Full rubber outsole for enhanced traction & durability",
+      "Durable UA Flow outsole provides better court feel so you can cut & stop/start faster than ever before"
+    ],
+    "sizes": ["35", "36", "40", "41", "42"],
+    "price": 120.00,
+    "old_price": 152.00,
+    "in_stock": true,
+    "gender": "unisex",
+    "category": "shoes",
+    "brand": "Under Armour",
+    "rating": [],
+    "reviews": [],
+    "colors": [
+        {
+          "color": "White",
+          "color2": "Black",
+          "hex": "#000000",
+          "hex2": "#FFFFFF",
+          "images": {
+            "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707890607/nextstore/shoes/shoe2/3026622-101_DEFAULT_z3dtsj.jpg",
+            "additional": [
+              "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707890624/nextstore/shoes/shoe2/3026622-101_A_qdzao3.jpg",
+              "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707890650/nextstore/shoes/shoe2/3026622-101_PAIR_hn8fws.jpg",
+              "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707890642/nextstore/shoes/shoe2/3026622-101_TOE_qoxaue.jpg",
+              "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707890654/nextstore/shoes/shoe2/3026622-101_SOLE_rgpc5q.jpg"
+            ]
+          }
+        },
+      {
+        "color": "Black",
+        "color2": "Metallic Gold",
+        "hex": "#000000",
+        "hex2": "#EDCB01",
+        "images": {
+          "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707890949/nextstore/shoes/shoe2/blackmetallicgold/3026622-001_DEFAULT_auj2mj.jpg",
+          "additional": [
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707890968/nextstore/shoes/shoe2/blackmetallicgold/3026622-001_A_xqnrow.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707890987/nextstore/shoes/shoe2/blackmetallicgold/3026622-001_PAIR_y9bcwe.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707890980/nextstore/shoes/shoe2/blackmetallicgold/3026622-001_TOE_ipw5lv.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707890992/nextstore/shoes/shoe2/blackmetallicgold/3026622-001_SOLE_xlwl5k.jpg"
+          ]
+        }
+      },
+      {
+        "color": "Black",
+        "color2": "Olive Tint",
+        "hex": "#000000",
+        "hex2": "#c5c6c3",
+        "images": {
+          "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707891353/nextstore/shoes/shoe2/blackolivetint/3026622-002_DEFAULT_dtyedy.jpg",
+          "additional": [
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707891376/nextstore/shoes/shoe2/blackolivetint/3026622-002_A_c2khkk.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707891398/nextstore/shoes/shoe2/blackolivetint/3026622-002_PAIR_cwfmgh.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707891390/nextstore/shoes/shoe2/blackolivetint/3026622-002_TOE_ynjjco.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707891402/nextstore/shoes/shoe2/blackolivetint/3026622-002_SOLE_ykzt1n.jpg"
+          ]
+        }
+      },
+      {
+        "color": "Halo Gray",
+        "color2": "White Clay",
+        "hex": "#c4c2c5",
+        "hex2": "#e2e3e5",
+        "images": {
+          "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707891657/nextstore/shoes/shoe2/haloclaywhiteclay/3026622-102_DEFAULT_umvkor.jpg",
+          "additional": [
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707891667/nextstore/shoes/shoe2/haloclaywhiteclay/3026622-102_A_wns5o1.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707891689/nextstore/shoes/shoe2/haloclaywhiteclay/3026622-102_PAIR_vv7zjk.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707891680/nextstore/shoes/shoe2/haloclaywhiteclay/3026622-102_TOE_jqzujd.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892015/nextstore/shoes/shoe2/haloclaywhiteclay/3026622-102_SOLE_iqyh2q.jpg"
+          ]
+        }
+      },
+      {
+        "color": "Versa Blue",
+        "color2": "Yellow",
+        "hex": "#364389",
+        "hex2": "#FFFF00",
+        "images": {
+          "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892067/nextstore/shoes/shoe2/versablueyellow/3026622-400_DEFAULT_bykt9u.jpg",
+          "additional": [
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892075/nextstore/shoes/shoe2/versablueyellow/3026622-400_A_brhpzg.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892093/nextstore/shoes/shoe2/versablueyellow/3026622-400_PAIR_ba9p9y.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892084/nextstore/shoes/shoe2/versablueyellow/3026622-400_TOE_drmkv8.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892102/nextstore/shoes/shoe2/versablueyellow/3026622-400_SOLE_k3dbh9.jpg"
+          ]
+        }
+      }
+    ]
+  }
+

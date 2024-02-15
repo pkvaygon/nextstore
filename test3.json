@@ -1,0 +1,71 @@
+{
+    "label": "Women's UA Infinite Elite",
+    "description": "Working on your endurance? Built with our newest, springiest UA HOVR+ cushioning, UA Infinite Elite keeps your legs feeling fresh for endless conditioning power. So, when game-time comes you'll be outrunning everyone.",
+    "style": "sport",
+    "lace_type": "Standard tie",
+    "info": [
+      "UA IntelliKnit upper with micro details & textures creates a precision 1:1 fit for ultimate comfort",
+      "TPU heel clip for added support & lockdown with asymmetrical pull tab to help with ease of entry",
+      "Heel design helps you land smoothly, lessens impact & increases overall stability",
+      "3D-molded sockliner cradles the foot for enhanced step-in comfort",
+      "Extra-springy UA HOVR™+ cushioning reduces impact, returns energy & helps propel you forward",
+      "Lightweight, Thinweb rubber outsole designed to provide durability & rebound where needed"
+    ],
+    "sizes": ["35", "36","38", "40", "41", "42"],
+    "price": 170.00,
+    "old_price": 185.00,
+    "in_stock": true,
+    "gender": "women",
+    "category": "shoes",
+    "brand": "Under Armour",
+    "rating": [],
+    "reviews": [],
+    "colors": [
+        {
+          "color": "Purple Ace",
+          "color2": "White",
+          "hex": "#800080",
+          "hex2": "#FFFFFF",
+          "images": {
+            "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892575/nextstore/shoes/shoe3/3027199-501_DEFAULT_aygnot.jpg",
+            "additional": [
+              "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892595/nextstore/shoes/shoe3/3027199-501_A_lhhdkd.jpg",
+              "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892621/nextstore/shoes/shoe3/3027199-501_PAIR_vecfh5.jpg",
+              "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892610/nextstore/shoes/shoe3/3027199-501_TOE_zarce1.jpg",
+              "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892676/nextstore/shoes/shoe3/3027199-501_SOLE_j4brjs.jpg"
+            ]
+          }
+        },
+      {
+        "color": "Black",
+        "color2": "Sonic Yellow",
+        "hex": "#000000",
+        "hex2": "#f3f093",
+        "images": {
+          "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892867/nextstore/shoes/shoe3/blacksonicyellow/3027199-004_DEFAULT_ba5zsr.jpg",
+          "additional": [
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892876/nextstore/shoes/shoe3/blacksonicyellow/3027199-004_A_ccm7ug.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707893002/nextstore/shoes/shoe3/blacksonicyellow/3027199-004_PAIR_ifun4p.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707892888/nextstore/shoes/shoe3/blacksonicyellow/3027199-004_TOE_hvwzko.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707893018/nextstore/shoes/shoe3/blacksonicyellow/3027199-004_SOLE_gb0ew6.jpg"
+          ]
+        }
+      },
+      {
+        "color": "White",
+        "color2": "Distant Gray",
+        "hex": "#ffffff",
+        "hex2": "#F2F4F1",
+        "images": {
+          "main": "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707893285/nextstore/shoes/shoe3/whitedistantgray/3027199-100_DEFAULT_vnbrn6.jpg",
+          "additional": [
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707893298/nextstore/shoes/shoe3/whitedistantgray/3027199-100_A_zwax8j.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707893322/nextstore/shoes/shoe3/whitedistantgray/3027199-100_PAIR_ngsceq.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707893313/nextstore/shoes/shoe3/whitedistantgray/3027199-100_TOE_xkpve1.jpg",
+            "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707893342/nextstore/shoes/shoe3/whitedistantgray/3027199-100_SOLE_vzlc60.jpg"
+          ]
+        }
+      }
+    ]
+  }
+

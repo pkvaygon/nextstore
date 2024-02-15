@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
-import { Card, Image, CardBody, CardFooter, Button, Spacer } from "@nextui-org/react";
+import { Card, Image, CardBody, CardFooter, Button, Spacer,Link } from "@nextui-org/react";
 import { motion } from 'framer-motion';
 import { bannerCatalog } from "@/localdata";
 import { cardVariants } from "@/framermotion";
+import { useRouter } from "next/navigation";
 
 export default function CardBanner(props) {
+  const router = useRouter()
   return (
     <article className="w-full h-full pt-8 grid  grid-cols-2 grid-flow-row gap-4">
       {bannerCatalog.map((el) => (
@@ -31,7 +33,7 @@ export default function CardBanner(props) {
               </div>
             </CardBody>
             <CardFooter className="justify-end">
-              <Button fullWidth>See catalog</Button>
+              <Button as={Link} href="/shop" fullWidth>See catalog</Button>
             </CardFooter>
           </Card>
         </motion.div>

@@ -14,6 +14,7 @@ export const authConfig = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      redirectUrl: process.env.NEXTAUTH_URL + "/api/auth/callback/google",
     }),
    CredentialsProvider({
       name: "credentials",
