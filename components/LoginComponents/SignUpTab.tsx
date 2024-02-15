@@ -3,7 +3,7 @@
 import React, { FormEvent } from "react";
 import {Button, Input, Checkbox, Link, Divider, Chip} from "@nextui-org/react";
 import {Icon} from "@iconify/react";
-import { z } from "zod";
+import { ZodFormattedError, z } from "zod";
 import { signUpSchema } from "@/zodValidation";
 import { signIn } from "next-auth/react";
 import { useUser } from "@/providers/Context";
@@ -26,7 +26,7 @@ export default function SignUpTab() {
     password: string;
     confirm: string;
 }, string>>({_errors: []})
- 
+ const [existingUser, setExistingUser] = React.useState<string | null>('')
   const handleInputChange = (name:string, value: string) => {
     setValidate((prev) => ({ ...prev, [name]: value }));
     setInValid({_errors: []});
@@ -41,13 +41,26 @@ async function onSignUp(e: FormEvent<HTMLFormElement>) {
       console.log('inValid',inValid)
     } else {
       setInValid({ _errors: [] });
-     await signIn('credentials', {
+   const result =  await signIn('credentials', {
         email: validate.email,
         password: validate.password,
         username: validate.username,
        redirect: false,
         action: 'signup'
-      })
+   })
+   if (result?.error) {
+    console.log(result.error)
+     setExistingUser(result.error)
+     setValidate((prev) => ({
+      ...prev,
+      username: '',
+      password: '',
+      confirm: ''
+    }));
+   } else {
+   setExistingUser(null)
+   }
+      
     }
   } catch (error) {
     console.error('catch',error);
@@ -77,8 +90,8 @@ async function onSignUp(e: FormEvent<HTMLFormElement>) {
             isClearable
           />
           <Input
-             isInvalid={!!inValid.email?._errors.length}
-             errorMessage={inValid.email?._errors[0] || ""}
+            isInvalid={!!inValid.email?._errors.length || !!existingUser}
+            errorMessage={(inValid.email?._errors[0] || "") + (existingUser ? ` ${existingUser}` : "")}
             value={validate.email}
             onChange={(e) => handleInputChange("email", e.target.value)}
             onClear={() => handleInputChange("email", "")}

@@ -44,7 +44,8 @@ export const authConfig = {
           console.log("New user added to MongoDB:", newUser);
           return newUser;
         } else {
-          return null;
+          throw new Error('User with this email already exists');
+          return null 
         }
       } else if (action === 'signin') {
         const existingUser = await mongoDBAdapter.getUserByEmail(credentials.email);
