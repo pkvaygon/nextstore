@@ -1,9 +1,10 @@
 "use client";
 
-import { Accordion, AccordionItem, Button, Card, CardBody, Chip, Image } from '@nextui-org/react';
+import {Button, Card, CardBody, Chip, Image,Link } from '@nextui-org/react';
 import React from 'react'
 import { Icon } from '@iconify/react';
 import { cn } from '@/utils';
+import { useRouter } from 'next/navigation';
 
 interface ProductListItemColorProps{
   color: string,
@@ -21,15 +22,14 @@ interface ProductListItemProps{
   price: number,
   rating: number[],
   description: string,
-  colors: ProductListItemColorProps[]
+  colors: ProductListItemColorProps[],
+  id: string
 }
 
-export default function ProductListItem({label, price, rating, colors, description}: ProductListItemProps) {
-  function generateRandomRating() {
-    const randomRating = Math.floor(Math.random() * 3) + 3;
-    return Array.from({ length: randomRating }, (_, index) => index + 1);
-  }
-  const newRating = rating.length > 0 ? rating : generateRandomRating();
+export default function ProductListItem({ label, price, rating, colors, description,id }: ProductListItemProps) {
+  const router = useRouter()
+
+  const newRating =  [1,2,3,4,5]
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
   return (
     <Card>
@@ -45,7 +45,9 @@ export default function ProductListItem({label, price, rating, colors, descripti
         {
   colors.map((color, index) => (
     <span
-    className={`max-w-7 w-7 h-7 rounded-full ${currentImageIndex === index ? 'outline outline-offset-2 outline-purple-500' : ''}`}
+      className={`max-w-7 w-7 h-7 rounded-full
+    transition-transform group-data-[pressed=true]:scale-90 ${currentImageIndex === index ?
+          'outline outline-offset-2 outline-purple-500' : ''}`}
       key={index}
       style={{
         background: `linear-gradient(to right, ${color.hex} 50%, ${color.hex2} 50%)`,
@@ -72,7 +74,7 @@ export default function ProductListItem({label, price, rating, colors, descripti
   ))
 }
         </div>
-          <Button variant='shadow' color='secondary'>Overview</Button>
+          <Button as={Link} href={`/shop/overview/${id}`} variant='shadow' color='secondary'>Overview</Button>
         </div>
     </CardBody>
     </Card>

@@ -26,7 +26,8 @@ export default function ShopCards() {
                   price={product.price}
                   description={product.description}
                   colors={product.colors}
-                  rating={product.rating}
+              rating={product.rating}
+              id={product._id.$oid}
                 />
           ))}
             </ScrollShadow>
