@@ -28,7 +28,7 @@ async function onSignIn(e: FormEvent<HTMLFormElement>) {
             if (!isValid.success) {
               const inValid = isValid.error.format()
               setInValid(inValid)
-              console.log(inValid)
+              // console.log(inValid)
             } else {
               if (rememberMe) {
                 localStorage.setItem('rememberMe', JSON.stringify(isValid.success))

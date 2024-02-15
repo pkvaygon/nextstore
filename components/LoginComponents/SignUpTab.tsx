@@ -39,7 +39,7 @@ async function onSignUp(e: FormEvent<HTMLFormElement>) {
     if (!isValid.success) {
       const inValid = isValid.error.format()
       setInValid(inValid)
-      console.log('inValid',inValid)
+      // console.log('inValid',inValid)
     } else {
       setInValid({ _errors: [] });
    const result =  await signIn('credentials', {
@@ -50,7 +50,7 @@ async function onSignUp(e: FormEvent<HTMLFormElement>) {
         action: 'signup'
    })
    if (result?.error) {
-    console.log(result.error)
+    // console.log(result.error)
      setExistingUser(result.error)
      setValidate((prev) => ({
       ...prev,

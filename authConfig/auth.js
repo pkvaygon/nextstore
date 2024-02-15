@@ -41,11 +41,11 @@ export const authConfig = {
             username: credentials.username,
             emailVerified: false,
           });
-          console.log("New user added to MongoDB:", newUser);
+          // console.log("New user added to MongoDB:", newUser);
           return newUser;
         } else {
           throw new Error('User with this email already exists');
-          return null 
+          // return null 
         }
       } else if (action === 'signin') {
         const existingUser = await mongoDBAdapter.getUserByEmail(credentials.email);
@@ -82,7 +82,7 @@ export const authConfig = {
               username: profile.given_name,
               emailVerified: profile.email_verified || false,
             });
-            console.log("New user added to MongoDB:", newUser);
+            // console.log("New user added to MongoDB:", newUser);
           }
       } catch (error) {
         console.error("Error during sign-in process:", error);
