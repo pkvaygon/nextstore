@@ -4,6 +4,7 @@ import "./globals.css";
 import Providers from "@/providers";
 import Header from "@/components/Header";
 import { getServerSession } from "next-auth";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default async function RootLayout({
           <main className="bg-[#27272A]">
         {children}
           </main>
+          <Footer/>
         </Providers>
       </body>
     </html>
