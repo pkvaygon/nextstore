@@ -19,6 +19,12 @@ export const navLinks: NavLinkProps[] = [
         label: 'FAQ',
         href: '/faq'
     },
+    {
+        id: 3,
+        key: 'checkout',
+        label: 'Test Checkout',
+        href: '/checkout'
+    }
 ]
 export const catalogCards = [
     {
