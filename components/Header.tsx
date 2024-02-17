@@ -33,7 +33,7 @@ export default function Header() {
         />
         <NavbarBrand className="max-sm:hidden max-sm:max-w-[0px] max-sm:mr-0 mr-4">
           <AcmeLogo />
-          <p className="hidden text-white sm:block font-bold text-inherit">JOEL</p>
+          <p className="hidden text-white sm:block font-bold text-inherit">ASKAR</p>
         </NavbarBrand>
         <NavbarContent className="hidden max-w-full sm:flex gap-3">
         {

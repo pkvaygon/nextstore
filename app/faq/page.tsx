@@ -18,8 +18,8 @@ export default function Component() {
     <section className="mx-auto w-full max-w-6xl px-4 py-20 sm:py-32 md:px-6 lg:px-8 lg:py-40">
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-8">
         <h2 className="w-full max-w-3xl bg-gradient-to-br from-foreground to-foreground-600 bg-clip-text px-2 text-center text-3xl font-bold leading-7 tracking-tight text-transparent md:text-5xl">
-          <span className="inline-block md:hidden">JOEL&apos;s FAQs</span>
-          <span className="hidden md:inline-block">JOEL&apos;s Frequently asked questions</span>
+          <span className="inline-block md:hidden">ASKAR&apos;s FAQs</span>
+          <span className="hidden md:inline-block">ASKAR&apos;s Frequently asked questions</span>
         </h2>
         <div>
           <Button

@@ -75,19 +75,19 @@ export const shippingAndReturns = [
 
 export const faqs = [
     {
-      title: "Who is JOEL?",
+      title: "Who is ASKAR?",
       content:
-        "JOEL is a design system for building performant, accessible and beautiful web experiences.",
+        "ASKAR is a design system for building performant, accessible and beautiful web experiences.",
     },
     {
       title: "Lorem Yoyo mzfk?",
       content:
-        "The Open Source Discount is available for everyone who is building an open source project. You can apply to the discount by sending an email to trump@joel.com",
+        "The Open Source Discount is available for everyone who is building an open source project. You can apply to the discount by sending an email to support@askar.com",
     },
     {
       title: "What is it?",
       content:
-        "Yes, you can use Acme for your freelance projects. You can purchase the Freelancer License from our website.",
+        "Yes, you can use ASKAR for your freelance projects. You can purchase the Freelancer License from our website.",
     },
     {
       title: "What is your refund policy?",
@@ -110,12 +110,12 @@ export const faqs = [
     {
       title: "Do you have discounts for my babies?",
       content:
-        "Yes, we provide a 50% discount for students. You can apply to the discount by sending an email to support@acme.com",
+        "Yes, we provide a 50% discount for students. You can apply to the discount by sending an email to support@askar.com",
     },
     {
       title: "Do you have discounts for startups?",
       content:
-        "Yes, we provide a 50% discount for startups. You can apply to the discount by sending an email to support@acme.com",
+        "Yes, we provide a 50% discount for startups. You can apply to the discount by sending an email to support@askar.com",
     },
     {
       title: "How often do you release updates?",
