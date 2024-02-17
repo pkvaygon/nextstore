@@ -22,9 +22,7 @@ export default async function RootLayout({
     <html lang="en">
       <body className={`${inter.className} dark`}>
         <Providers session={session}>
-          <header>
             <Header/>
-          </header>
           <main className="bg-[#27272A]">
         {children}
           </main>

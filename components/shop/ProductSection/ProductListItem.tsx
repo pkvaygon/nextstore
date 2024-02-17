@@ -4,7 +4,6 @@ import {Button, Card, CardBody, Chip, Image,Link } from '@nextui-org/react';
 import React from 'react'
 import { Icon } from '@iconify/react';
 import { cn } from '@/utils';
-import { useRouter } from 'next/navigation';
 
 interface ProductListItemColorProps{
   color: string,
@@ -24,7 +23,6 @@ interface ProductListItemProps{
 }
 
 export default function ProductListItem({ label, price, rating, colors, description,id }: ProductListItemProps) {
-  const router = useRouter()
 
   const newRating =  [1,2,3,4,5]
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);

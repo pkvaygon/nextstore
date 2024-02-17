@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, useDisclosure} from "@nextui-org/react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar, Button, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, useDisclosure, Badge} from "@nextui-org/react";
 import {AcmeLogo,SearchIcon, ShoppingCart} from "@/svg";
 import { navLinks } from "@/localdata";
 import { usePathname } from 'next/navigation';
@@ -24,7 +24,7 @@ export default function Header() {
 
   return (
     <>
-    <Navbar className="w-full p-0" position="sticky" isBordered>
+    <Navbar className="w-full p-0" isBordered>
       <NavbarContent className="max-sm:max-w-[27px]" justify="start">
           <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -67,14 +67,17 @@ export default function Header() {
               {
             session?.user ?
               <>
-                        <Button className="max-sm:hidden" color="default">
-                          <ShoppingCart width={20} height={20} className=""/>
+                  <Badge placement="bottom-right" className="max-sm:hidden" isOneChar shape="circle" showOutline={false} color="secondary" content={0} size="lg">
+                <Button className="max-sm:hidden"  color="default">
+                    <ShoppingCart width={24} height={24} className="" />
                           </Button>
+                  </Badge>
         <Dropdown className="dark:bg-[#3F3F46] p-0 rounded-lg text-white" placement="bottom-end">
           <DropdownTrigger>
                     <Avatar
               isBordered
               as="button"
+              radius="full"
               className="transition-transform"
               color="secondary"
               name="Jason Hughes"
@@ -111,8 +114,10 @@ export default function Header() {
               <div className="w-full flex justify-center items-center">
                   <AcmeLogo/>
               </div>
-              <Button isDisabled={user ? false : true} color="default">
+              <Button className="w-full" isDisabled={user ? false : true} color="default">
+              <Badge placement="bottom-right"  isOneChar shape="circle" showOutline={false} color="secondary" content={0} size="sm">
                   <ShoppingCart width={24} height={24}/>
+                          </Badge>
                           </Button>
         {navLinks.map((el) => (
           <NavbarMenuItem key={el.id}>

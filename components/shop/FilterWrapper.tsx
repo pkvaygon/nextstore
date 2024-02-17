@@ -13,7 +13,7 @@ export default function FilterWrapper() {
         aria-label="Pricing Filter"
         range={{
           min: 0,
-          defaultValue: [100, 500],
+          defaultValue: [0, 1000],
           max: 1000,
           step: 1,
         }}
