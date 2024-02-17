@@ -117,10 +117,8 @@ export default function OverviewProduct({ params }:ParamsProps) {
     <span
       onClick={()=>handleColorClick(index)}
        className={`max-w-7 w-7 h-7 rounded-full
-    transition-transform group-data-[pressed=true]:scale-90`}
-    //    className={`max-w-7 w-7 h-7 rounded-full
-    // transition-transform group-data-[pressed=true]:scale-90 ${currentImageIndex === index ?
-    //       'outline outline-offset-2 outline-purple-500' : ''}`}
+    transition-transform group-data-[pressed=true]:scale-90 ${currentColorIndex === index ?
+          'outline outline-offset-2 outline-purple-500' : ''}`}
       key={index}
       style={{
         background: `linear-gradient(to right, ${color.hex} 50%, ${color.hex2} 50%)`,
