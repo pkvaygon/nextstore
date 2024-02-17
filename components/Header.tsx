@@ -24,9 +24,10 @@ export default function Header() {
 
   return (
     <>
-    <Navbar className="w-full p-0" isBordered>
+    <Navbar  isMenuOpen={isMenuOpen}  className="w-full p-0" isBordered>
       <NavbarContent className="max-sm:max-w-[27px]" justify="start">
           <NavbarMenuToggle
+          onClick={()=> setIsMenuOpen(!isMenuOpen)}
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden text-white"
         />
@@ -126,6 +127,7 @@ export default function Header() {
               className="w-full"
               href={el.href}
               size="lg"
+              onClick={()=> setIsMenuOpen(!isMenuOpen)}
             >
               {el.label}
             </Link>
