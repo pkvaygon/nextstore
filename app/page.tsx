@@ -3,7 +3,7 @@ import CardBanner from './../components/Cards/CardBanner';
 import { connectToDatabase } from "@/actions";
 
 export default async function Home() {
-const koko = await connectToDatabase()
+  const koko = await connectToDatabase()
 console.log(koko)
   return (
     <section>

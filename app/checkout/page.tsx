@@ -16,6 +16,9 @@ import {AnimatePresence, motion} from "framer-motion";
 
 // import {VisaIcon, MasterCardIcon, PayPalIcon} from "./providers";
 import {AcmeLogo} from "@/svg";
+import OrderSummary from "@/components/checkout/OrderSummary";
+import ShippingForm from "@/components/checkout/Shipping-form";
+import PaymentForm from "@/components/checkout/Payment-form";
 // import ShippingForm from "./shipping-form";
 // import OrderSummary from "./order-summary";
 // import cartItems from "./cart-items";
@@ -68,7 +71,7 @@ export default function Component() {
       case 1:
         return "Where should we send your order?";
       case 2:
-        return "How would you like to pay?";
+        return "Make a payment";
       default:
         return "Review your order";
     }
@@ -80,26 +83,35 @@ export default function Component() {
       base: "data-[selected=true]:border-foreground",
       control: "bg-foreground",
     };
-
+    const cartItems = [
+      {
+        id: "1",
+        name: "Training shoes",
+        href: "#",
+        price: 49.99,
+        color: "black",
+        size: "42",
+        quantity: 1,
+        imageSrc: "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/shoes/1.png",
+      },
+    ]
     switch (page) {
       case 0:
-        // return <OrderSummary hideTitle items={cartItems} />;
-            return <div>Order Summary</div>
+        return <OrderSummary hideTitle items={cartItems} />;
+            // return <div>Order Summary</div>
       case 1:
         return (
           <div className="mt-4 flex flex-col gap-6">
-                {/* <ShippingForm hideTitle variant="bordered" /> */}
-                <div>Shipping Form</div>
+                <ShippingForm hideTitle variant="bordered" />
+                {/* <div>Shipping Form</div> */}
           </div>
         );
       case 2:
         return (
           <div className="flex flex-col gap-4 text-white">
             <section className="flex flex-col gap-2">
-             
-                            {/* <PaymentForm variant="bordered" /> */}
-                            <div>Payment Form</div>
-
+                            <PaymentForm variant="bordered" />
+                            {/* <div>Payment Form</div> */}
             </section>
           </div>
         );
@@ -109,13 +121,13 @@ export default function Component() {
   }, [page]);
 
   return (
-    <section className="flex h-[calc(100vh_-_60px)] w-full gap-8 text-white">
+    <section className="flex h-auto w-full gap-8 text-white">
       {/* Left */}
       <div className="w-full flex-none py-4 lg:w-[44%]">
         <div className="flex justify-between px-2">
           <div className="flex items-center">
             <AcmeLogo />
-            <p className="font-semibold">ACME</p>
+            <p className="font-semibold">JOEL</p>
           </div>
           <div className="flex items-center gap-2">
             <p>
@@ -135,6 +147,7 @@ export default function Component() {
               radius="full"
               variant="flat"
               onPress={() => paginate(-1)}
+              aria-label="page"
             >
               <Icon icon="solar:arrow-left-outline" width={20} />
               Go back
@@ -163,6 +176,7 @@ export default function Component() {
                 className="mt-8 bg-foreground text-background"
                 size="lg"
                 onPress={() => paginate(1)}
+                aria-label={ctaLabel}
               >
                 {ctaLabel}
               </Button>
@@ -173,6 +187,7 @@ export default function Component() {
             <div className="flex w-full flex-col items-start gap-2">
               <p className="text-small font-medium">Review</p>
               <Progress
+              aria-label="review"
                 classNames={{
                   indicator: "!bg-foreground",
                 }}
@@ -182,6 +197,7 @@ export default function Component() {
             <div className="flex w-full flex-col items-start gap-2">
               <p className="text-small font-medium">Delivery</p>
               <Progress
+              aria-label="delivery"
                 classNames={{
                   indicator: "!bg-foreground",
                 }}
@@ -191,6 +207,7 @@ export default function Component() {
             <div className="flex w-full flex-col items-start gap-2">
               <p className="text-small font-medium">Payment</p>
               <Progress
+                aria-label="payment"
                 classNames={{
                   indicator: "!bg-foreground",
                 }}
@@ -219,7 +236,7 @@ export default function Component() {
                 <Icon key={i} className="text-white/80" icon="solar:star-bold" width={16} />
               ))}
             </div>
-            <Link className="text-white/60" href="#" size="sm" underline="always">
+            <Link className="text-white/60" href="#">
               120 reviews
             </Link>
           </div>

@@ -5,8 +5,15 @@ import {Accordion, AccordionItem, Button} from "@nextui-org/react";
 import {Icon} from "@iconify/react";
 
 import { faqs } from "@/localdata";
+import { test } from "@/storage/cartSlice";
+import { useAppDispatch, useAppSelector } from "@/storage/redux-hooks";
 
 export default function Component() {
+  const dispatch = useAppDispatch()
+  const lpp = useAppSelector(state=> state.cart.cs)
+  React.useEffect(() => {
+  console.log(lpp)
+  },[dispatch,lpp])
   return (
     <section className="mx-auto w-full max-w-6xl px-4 py-20 sm:py-32 md:px-6 lg:px-8 lg:py-40">
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center gap-8">
@@ -21,6 +28,7 @@ export default function Component() {
             endContent={<Icon icon="lucide:chevron-right" width={24} />}
             size="lg"
             variant="shadow"
+            onClick={()=> dispatch(test())}
           >
             Contact Us
           </Button>

@@ -82,7 +82,7 @@ export const faqs = [
     {
       title: "Lorem Yoyo mzfk?",
       content:
-        "The Open Source Discount is available for everyone who is building an open source project. You can apply to the discount by sending an email to trump@acme.com",
+        "The Open Source Discount is available for everyone who is building an open source project. You can apply to the discount by sending an email to trump@joel.com",
     },
     {
       title: "What is it?",
@@ -121,6 +121,11 @@ export const faqs = [
       title: "How often do you release updates?",
       content: "We release updates every two weeks.",
     },
-  ];
+];
+  
+export const countries = [
+  {name: "United States", code: "US"},
+  {name: "Kyrgyzstan", code: "KG"},
+]
   
   
