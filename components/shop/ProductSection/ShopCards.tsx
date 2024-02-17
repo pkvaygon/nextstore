@@ -4,13 +4,6 @@ import { ScrollShadow } from '@nextui-org/react';
 import ProductListItem from './ProductListItem';
 
 
-const productsWithRatingsAndDescription = products.map((product) => ({
-    ...product,
-    rating: Math.floor(Math.random() * 5) < 4 ? 4 : 5,
-    ratingCount: Math.floor(Math.random() * 1000),
-    description: product.description
-  }));
-
 export default function ShopCards() {
     return (
         <div className="my-auto flex w-full max-w-full flex-col items-start gap-2">

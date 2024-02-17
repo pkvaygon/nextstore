@@ -25,17 +25,19 @@ interface ParamsProps{
 export default function OverviewProduct({ params }:ParamsProps) {
     const id = params.id
     const product =concret.find(product => product._id.$oid === id)
-    React.useEffect(() => {
-    console.log('id',id)
-    },[id])
-    const [isStarred, setIsStarred] = React.useState(false);
-    const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
-        const [selectedImage, setSelectedImage] = React.useState();
-
+  const [isStarred, setIsStarred] = React.useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+  const [currentColorIndex, setCurrentColorIndex] = React.useState(0)
         const newRating =  [1,2,3,4,5]
     if (!product) {
         return <div>Product not found</div>;
-      }
+  }
+  const handleImageClick = (index: number) => {
+    setCurrentImageIndex(index);
+  };
+  const handleColorClick = (index: number) => {
+  setCurrentColorIndex(index)
+  }
     return (
         <section className="container h-[1200px] lg:h-[800px] p-4">
       <div
@@ -53,45 +55,30 @@ export default function OverviewProduct({ params }:ParamsProps) {
               Popular
             </Chip>
           {/* Main Image */}
-          <Image alt={product?.label} className="h-full w-full" radius="lg" src={product?.colors[currentImageIndex].images.main} />
+          <Image src={product.colors[currentColorIndex].images[currentImageIndex]} alt={product?.label} className="h-full w-full" radius="lg"  />
           {/* Image Gallery */}
           <ScrollShadow
             className="-mx-2 -mb-4 mt-4 flex w-full max-w-full gap-4 px-2 pb-4 pt-2"
             orientation="horizontal"
                     >
-                      
-            {product?.colors[currentImageIndex].images.additional.map((image, index) => (
+            {product?.colors[currentColorIndex].images.map((image, index) => (
               <button
                 key={`${image}-${index}`}
                 className="relative h-24 w-24 flex-none cursor-pointer items-center justify-center rounded-medium ring-offset-background transition-shadow data-[selected=true]:outline-none data-[selected=true]:ring-2 data-[selected=true]:ring-focus data-[selected=true]:ring-offset-2"
-                data-selected={index === currentImageIndex}
-                onClick={() => setCurrentImageIndex(index)}
+                data-selected={index}
+                onClick={() => handleImageClick(index)}
               >
                 <Image
+                  src={image}
                   removeWrapper
                   alt="sd"
                   classNames={{
                     img: "h-full w-full",
                   }}
                   radius="lg"
-                  src={image}
                 />
               </button>
             ))}
-                        <button
-                className="relative h-24 w-24 flex-none cursor-pointer items-center justify-center rounded-medium ring-offset-background transition-shadow data-[selected=true]:outline-none data-[selected=true]:ring-2 data-[selected=true]:ring-focus data-[selected=true]:ring-offset-2"
-                onClick={() => setCurrentImageIndex(currentImageIndex)}
-              >
-                <Image
-                  removeWrapper
-                  alt="sd"
-                  classNames={{
-                    img: "h-full w-full",
-                  }}
-                  radius="lg"
-                  src={product?.colors[currentImageIndex].images.main}
-                />
-              </button>  
           </ScrollShadow>
         </div>
 
@@ -102,7 +89,7 @@ export default function OverviewProduct({ params }:ParamsProps) {
           <div className="my-2 flex items-center gap-2">
           <div className='flex'>
         {
-          newRating.map((star, index) => (
+          newRating.map((_, index) => (
     <Icon
       color='secondary'
       key={index}
@@ -128,14 +115,16 @@ export default function OverviewProduct({ params }:ParamsProps) {
         {
   product.colors.map((color, index) => (
     <span
-    className={`max-w-7 w-7 h-7 rounded-full
-    transition-transform group-data-[pressed=true]:scale-90 ${currentImageIndex === index ?
-          'outline outline-offset-2 outline-purple-500' : ''}`}
+      onClick={()=>handleColorClick(index)}
+       className={`max-w-7 w-7 h-7 rounded-full
+    transition-transform group-data-[pressed=true]:scale-90`}
+    //    className={`max-w-7 w-7 h-7 rounded-full
+    // transition-transform group-data-[pressed=true]:scale-90 ${currentImageIndex === index ?
+    //       'outline outline-offset-2 outline-purple-500' : ''}`}
       key={index}
       style={{
         background: `linear-gradient(to right, ${color.hex} 50%, ${color.hex2} 50%)`,
       }}
-      onClick={() => setCurrentImageIndex(index)}
     >
     </span>
   ))

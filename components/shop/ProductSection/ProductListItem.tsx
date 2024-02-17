@@ -11,10 +11,7 @@ interface ProductListItemColorProps{
   color2: string,
   hex: string,
   hex2: string,
-  images: {
-    main: string,
-    additional: string[]
-  }
+  images: string[]
 }
 
 interface ProductListItemProps{
@@ -35,7 +32,7 @@ export default function ProductListItem({ label, price, rating, colors, descript
     <Card>
       <CardBody className='flex flex-col gap-3'>
         <div>
-        <Image isZoomed src={colors[currentImageIndex].images.main} alt={label} />
+        <Image isZoomed src={colors[currentImageIndex].images[0]} alt={label} />
         </div>
         <div className='flex justify-between'>
         <h2 className='max-h-[54px] h-[54px]'>{label}</h2>
