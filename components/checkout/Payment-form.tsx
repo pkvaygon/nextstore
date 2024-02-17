@@ -69,3 +69,30 @@ const PaymentForm = React.forwardRef<HTMLDivElement, PaymentFormProps>(
 PaymentForm.displayName = "PaymentForm";
 
 export default PaymentForm;
+
+// Congratulations! Your payment was successful.
+
+// Order Details:
+// - Order Number: [Your Order Number]
+// - Date: [Current Date and Time]
+// - Total Amount: [Total Amount Paid]
+
+// Thank you for choosing our services. Your order is now being processed, and you will receive a confirmation email shortly.
+
+// If you have any questions or need further assistance, feel free to contact our customer support.
+
+// We appreciate your business!
+
+
+// Payment Failed!
+
+// We're sorry, but it seems that there was an issue processing your payment. Please check the following:
+
+// 1. Verify that the payment details you provided are correct.
+// 2. Ensure that your payment method is valid and has sufficient funds.
+
+// If the problem persists, you may want to try another payment method or contact your bank for further assistance.
+
+// If you continue to experience difficulties or have any questions, please reach out to our customer support team. We apologize for any inconvenience this may have caused.
+
+// Thank you for your understanding.

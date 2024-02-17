@@ -155,7 +155,7 @@ export default function Component() {
           </div>
 
           <AnimatePresence custom={direction} initial={false} mode="wait">
-            <motion.form
+            <motion.div
               key={page}
               animate="center"
               className="mt-8 flex flex-col gap-3"
@@ -180,7 +180,7 @@ export default function Component() {
               >
                 {ctaLabel}
               </Button>
-            </motion.form>
+            </motion.div>
           </AnimatePresence>
 
           <div className="mt-auto flex w-full justify-between gap-8 pb-8 pt-4">

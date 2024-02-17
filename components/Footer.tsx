@@ -85,7 +85,7 @@ export default function Footer() {
           <div className="space-y-8 md:pr-8">
             <div className="flex items-center justify-start">
               <AcmeLogo />
-              <span className="text-medium font-medium">ACME</span>
+              <span className="text-medium font-medium">Askar</span>
             </div>
             <p className="text-small text-default-500">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique
