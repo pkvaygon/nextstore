@@ -15,6 +15,7 @@ import {Icon} from "@iconify/react";
 
 import {cn} from "@/utils";
 import concret from '@/nextstore.shoes.json'
+import { shippingAndReturns } from "@/localdata";
 
 interface ParamsProps{
     params: {
@@ -39,7 +40,7 @@ export default function OverviewProduct({ params }:ParamsProps) {
   setCurrentColorIndex(index)
   }
     return (
-        <section className="container h-[1200px] lg:h-[800px] p-4">
+        <section className="container h-auto lg:h-auto overflow-hidden p-4">
       <div
         className={cn(
           "relative w-full h-auto flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8",
@@ -150,29 +151,41 @@ export default function OverviewProduct({ params }:ParamsProps) {
               <Icon className="[&>path]:stroke-[2px]" icon="solar:arrow-right-up-linear" />
             </Link>
           </div>
-          {/* <Accordion
+          <Accordion
             className="-mx-1 mt-2"
             itemClasses={{
               title: "text-default-400",
               content: "pt-0 pb-6 text-base text-default-500",
             }}
-            items={details}
+            // items={product.info}
             selectionMode="multiple"
-          >
-            {details
-              ? details.map(({title, items}) => (
-                  <AccordionItem key={title} title={title}>
-                    <ul className="list-inside list-disc">
-                      {items.map((item) => (
-                        <li key={item} className="text-default-500">
-                          {item}
+            >
+              <AccordionItem key={0} title={'Information'}>
+                
+                <ul className="list-inside list-disc flex flex-col gap-2">
+                  <li className="text-default-500">
+                    Lace type : {product.lace_type}
+                  </li>
+                  {
+                    product?.info.map((info, index) => (
+                        <li key={index} className="text-default-500">
+                          {info}
                         </li>
-                      ))}
+                      ))
+                  }
                     </ul>
-                  </AccordionItem>
-                ))
-              : []}
-          </Accordion> */}
+              </AccordionItem>
+              <AccordionItem key={1} title={'Shipping & Returns'}>
+                <ul className="list-inside list-disc flex flex-col">
+                  {shippingAndReturns.map((info, index) => (
+                    <li className="text-default-500" key={index}>
+                      {info}
+                  </li>
+                  ))
+                  }
+</ul>
+              </AccordionItem>
+          </Accordion>
           <div className="mt-2 flex gap-2">
             <Button
               fullWidth

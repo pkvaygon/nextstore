@@ -59,3 +59,10 @@ export const bannerCatalog = [
     },
 
 ]
+
+export const shippingAndReturns = [
+"Free shipping &  returns",
+    "Free, no-hassle return",
+    "Complimentary gift packaging",
+"Ships within 24 hours!"
+]
