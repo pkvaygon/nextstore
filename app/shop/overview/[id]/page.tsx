@@ -56,7 +56,7 @@ export default function OverviewProduct({ params }:ParamsProps) {
               Popular
             </Chip>
           {/* Main Image */}
-          <Image src={product.colors[currentColorIndex].images[currentImageIndex]} alt={product?.label} className="h-full w-full" radius="lg"  />
+          <Image isZoomed src={product.colors[currentColorIndex].images[currentImageIndex]} alt={product?.label} className="h-full w-full" radius="lg"  />
           {/* Image Gallery */}
           <ScrollShadow
             className="-mx-2 -mb-4 mt-4 flex w-full max-w-full gap-4 px-2 pb-4 pt-2"

@@ -276,4 +276,90 @@
     }
   ]
 
-}]
+},
+{
+  "_id": {
+    "$oid": "asdnpasdawdacinw"
+  },
+  "label": "Men's UA Charged Pursuit",
+  "description": "Light and flexible is the name of the game here. A lot of mesh for breathability and Charged Cushioning® to help protect against impact. Just put them on and run for miles.",
+  "style": "sport",
+  "lace_type": "Standard tie",
+  "info": [
+    "Performance mesh upper for lightweight breathability",
+    "Foam padding placed around your ankle collar & under the tongue for an incredibly comfortable fit & feel",
+    "Deluxe foam sockliner molds to your foot for added underfoot comfort",
+    "Charged Cushioning® midsole uses compression molded foam for ultimate responsiveness & durability",
+    "Durable outsole pattern for flex & traction"
+  ],
+  "sizes": [
+    "40",
+    "41",
+    "42",
+    "43"
+  ],
+  "price": 70.00,
+  "old_price": 80.00,
+  "in_stock": true,
+  "gender": "men",
+  "category": "shoes",
+  "brand": "Under Armour",
+  "rating": [],
+  "reviews": [],
+  "colors": [
+    {
+      "color": "Academy",
+      "color2": "White",
+      "hex": "#475266",
+      "hex2": "#FFFFFF",
+      "images": [
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150039/nextstore/shoes/shoe4/3024878-401_DEFAULT_f2boxc.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150064/nextstore/shoes/shoe4/3024878-401_A_cnp1r9.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150078/nextstore/shoes/shoe4/3024878-401_PAIR_sowvtv.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150068/nextstore/shoes/shoe4/3024878-401_TOE_xj2wv2.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150087/nextstore/shoes/shoe4/3024878-401_SOLE_qh8ze9.jpg"
+      ]
+    },
+    {
+      "color": "Black",
+      "color2": "White",
+      "hex": "#000000",
+      "hex2": "#ffffff",
+      "images": [
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150312/nextstore/shoes/shoe4/blackwhite/3024878-001_DEFAULT_unwwa9.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150321/nextstore/shoes/shoe4/blackwhite/3024878-001_A_cb9lnm.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150339/nextstore/shoes/shoe4/blackwhite/3024878-001_PAIR_bnlqqi.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150331/nextstore/shoes/shoe4/blackwhite/3024878-001_TOE_dafuv6.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150361/nextstore/shoes/shoe4/blackwhite/3024878-001_SOLE_sexliv.jpg"
+      ]
+    },
+    {
+      "color": "Black",
+      "color2": "Black",
+      "hex": "#000000",
+      "hex2": "#000000",
+      "images": [
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150466/nextstore/shoes/shoe4/black/3024878-002_DEFAULT_pesf64.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150474/nextstore/shoes/shoe4/black/3024878-002_A_ka2phh.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150491/nextstore/shoes/shoe4/black/3024878-002_PAIR_sn9ctr.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150483/nextstore/shoes/shoe4/black/3024878-002_TOE_rkypch.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150495/nextstore/shoes/shoe4/black/3024878-002_SOLE_tnmsin.jpg"
+      ]
+    },
+    {
+      "color": "Red",
+      "color2": "White",
+      "hex": "#FF0000",
+      "hex2": "#ffffff",
+      "images": [
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150625/nextstore/shoes/shoe4/red/3024878-600_DEFAULT_cdiovw.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150637/nextstore/shoes/shoe4/red/3024878-600_A_xekh3h.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150654/nextstore/shoes/shoe4/red/3024878-600_PAIR_rguzk4.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150646/nextstore/shoes/shoe4/red/3024878-600_TOE_bpdlrd.jpg",
+        "https://res.cloudinary.com/dxvf93ovn/image/upload/v1708150659/nextstore/shoes/shoe4/red/3024878-600_SOLE_llpnep.jpg"
+      ]
+    }
+  ]
+
+}
+]
