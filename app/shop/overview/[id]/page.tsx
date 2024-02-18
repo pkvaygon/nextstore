@@ -19,6 +19,8 @@ import { shippingAndReturns } from "@/localdata";
 import { useAppDispatch } from "@/storage/redux-hooks";
 import { ReduxItemsProps, addToCart } from "@/storage/cartSlice";
 import { ProductItemProps } from "@/types";
+import MessageCard from "@/components/OverviewNotification";
+import { motion } from 'framer-motion';
 
 interface ParamsProps{
     params: {
@@ -34,6 +36,8 @@ export default function OverviewProduct({ params }:ParamsProps) {
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
   const [currentColorIndex, setCurrentColorIndex] = React.useState(0)
   const [selectedSizes, setSelectedSizes] = React.useState<Set<string>>(new Set());
+  const [isMessageVisible, setMessageVisible] = React.useState(false);
+
         const newRating =  [1,2,3,4,5]
     if (!product) {
         return <div>Product not found</div>;
@@ -50,19 +54,20 @@ export default function OverviewProduct({ params }:ParamsProps) {
       label: item.label,
       sizes: Array.from(selectedSizes),
       price: item.price,
-      colors: item.colors.map((color) => ({
-        color: color.color,
-        color2: color.color2,
-        hex: color.hex,
-        hex2: color.hex2,
-      })),
-      image: item.colors[0].images[0],
+      colors: [{
+        color: item.colors[currentColorIndex].color,
+        color2: item.colors[currentColorIndex].color2,
+        hex: item.colors[currentColorIndex].hex,
+        hex2: item.colors[currentColorIndex].hex2,
+      }],
+      image: item.colors[currentColorIndex].images[0],
       quantity: item.quantity || 1,
     };
   };
   const handleAddCart = (item: ProductItemProps) => {
     const reduxItem = convertToReduxFormat(item);
     dispatch(addToCart(reduxItem));
+    setMessageVisible(true)
   };
   
   const handleSizeClick = (size: string) => {
@@ -77,7 +82,24 @@ export default function OverviewProduct({ params }:ParamsProps) {
     });
   };
     return (
-        <section className="container h-auto lg:h-auto overflow-hidden p-4">
+      <section className="container h-auto lg:h-auto overflow-hidden p-4">
+         {isMessageVisible && (
+    <motion.div
+            className="popup-message"
+            style={{ zIndex: 100 }}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+  >
+    <MessageCard
+      showFeedback
+      avatar="https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/avatar_ai.png"
+      message="Продукт успешно добавлен в корзину!"
+      status="success"
+    />
+  </motion.div>
+)}
       <div
         className={cn(
           "relative w-full h-auto flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8",

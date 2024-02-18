@@ -58,8 +58,28 @@ const cartSlice = createSlice({
         state.items.splice(indexToRemove, 1);
       }
     },
+    incrementItem: (state, action: PayloadAction<string>) => {
+      const idToIncrement = action.payload;
+      const itemToIncrement = state.items.find(
+        (item) => item._id.$oid === idToIncrement
+      );
+      if (itemToIncrement) {
+        itemToIncrement.quantity += 1;
+        state.totalPrice += itemToIncrement.price;
+      }
+    },
+    decrementItem: (state, action: PayloadAction<string>) => {
+      const idToDecrement = action.payload;
+      const itemToDecrement = state.items.find(
+        (item) => item._id.$oid === idToDecrement
+      );
+      if (itemToDecrement && itemToDecrement.quantity > 1) {
+        itemToDecrement.quantity -= 1;
+        state.totalPrice -= itemToDecrement.price;
+      }
+    },
   },
 });
 
-export const { addToCart,removeFromCart } = cartSlice.actions;
+export const { addToCart,removeFromCart,incrementItem,decrementItem } = cartSlice.actions;
 export default cartSlice.reducer;

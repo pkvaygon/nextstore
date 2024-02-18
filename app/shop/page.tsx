@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 import SidebarDrawer from "@/components/shop/SidebarDrawer";
 import FilterWrapper from "@/components/shop/FilterWrapper";
 import ShopCards from "@/components/shop/ProductSection/ShopCards";
+import { selectSortOption } from "@/localdata";
 
 
 export default  function Shop() {
@@ -59,21 +60,13 @@ export default  function Shop() {
               placeholder="Select an option"
               variant="bordered"
             >
-              <SelectItem color="secondary"  className="text-white" key="newest" value="newest">
-                Newest
-              </SelectItem>
-              <SelectItem color="secondary" className="text-white" key="price_low_to_high" value="price_low_to_high">
-                Price: Low to High
-              </SelectItem>
-              <SelectItem color="secondary" className="text-white" key="price_high_to_low" value="price_high_to_low">
-                Price: High to Low
-              </SelectItem>
-              <SelectItem color="secondary" className="text-white" key="top_rated" value="top_rated">
-                Top Rated
-              </SelectItem>
-              <SelectItem color="secondary" className="text-white" key="most_popular" value="most_popular">
-                Most Popular
-              </SelectItem>
+                {
+                  selectSortOption.map((item) => (
+                    <SelectItem key={item.key} value={item.value} color="secondary" className="text-white">
+                    {item.label}
+                  </SelectItem>
+                    ))
+                }
             </Select>
           </div>
         </section>

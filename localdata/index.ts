@@ -127,5 +127,12 @@ export const countries = [
   {name: "United States", code: "US"},
   {name: "Kyrgyzstan", code: "KG"},
 ]
-  
+
+export const selectSortOption = [
+  { key: "newest", value: "newest", label: "Newest" },
+  { key: "price_low_to_high", value: "price_low_to_high", label: "Price: Low to High" },
+  { key: "price_high_to_low", value: "price_high_to_low", label: "Price: High to Low" },
+  { key: "top_rated", value: "top_rated", label: "Top Rated" },
+  { key: "most_popular", value: "most_popular", label: "Most Popular" }
+]
   
