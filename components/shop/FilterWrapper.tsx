@@ -1,20 +1,24 @@
 "use client"
 
-import { Accordion, AccordionItem, Button, Checkbox, Chip } from "@nextui-org/react";
+import { Accordion, AccordionItem, Button, Checkbox, CheckboxGroup, Chip } from "@nextui-org/react";
 import PriceSlider from "./PriceSlider/PriceSlider"
 import { allColors, allSizes,allCategories,allGenders,allBrands } from "@/utils";
+import { useReduxFunction } from "@/utils/filter-functions";
+import { ProductColorsProps, ProductItemProps } from "@/types";
 export default function FilterWrapper() {
-
+  type ChangeHandler = (value: string[]) => void;
+  const { minPrice, maxPrice,selectColorFC, selectSizeFC, reduxSizes, reduxColors,selectPriceRangeFC,reduxCategories,selectCategoryFC } = useReduxFunction()
     return (
         <section className="flex flex-col gap-2">
         <div className=" flex flex-col gap-2">
       <h3 className="text-medium font-medium leading-8 text-default-600">Price Range</h3>
           <PriceSlider
-        aria-label="Pricing Filter"
-        range={{
-          min: 0,
-          defaultValue: [0, 1000],
-          max: 1000,
+          onChangeEnd={(values)=>selectPriceRangeFC(values)}
+            aria-label="Pricing Filter"
+            range={{
+          min: minPrice,
+          defaultValue: [minPrice, maxPrice],
+          max: maxPrice,
           step: 1,
         }}
       />
@@ -24,13 +28,16 @@ export default function FilterWrapper() {
           <div className="grid grid-cols-5 grid-flow-row gap-2">
           {
                 allSizes.map((size,index)=>(
-                    <Chip
-                        radius="sm"
-                        size="lg"
-                        key={index}
-                        className={`text-foreground`}
-                    >{size}</Chip>
-                    ))                
+                  <Chip
+                    onClick={()=>selectSizeFC(size)}
+                    radius="sm"
+                    size="lg"
+                    key={index}
+                    className={`text-foreground cursor-pointer ${reduxSizes.includes(size) ? "bg-purple-400" : "bg-default-400"}`}
+                  >
+                  {size}
+                  </Chip>
+                  ))               
             } 
           </div>
         </div>
@@ -42,21 +49,21 @@ export default function FilterWrapper() {
           {allColors.map((color, index) => (
             <button
               key={index}
-              className="rounded-full w-8 h-8"
+              className={`rounded-full w-8 h-8 ${reduxColors.includes(color) ? "ring-4 ring-purple-500 ring-offset-1": ""}`}
               style={{
                 background: `linear-gradient(to right, ${color.hex} 50%, ${color.hex2} 50%)`,
               }}
-              // Вместо onClick можно добавить логику обработки выбора цвета
+              onClick={()=>selectColorFC(color)}
             ></button>
           ))}
           </div>
         </div>
         <Accordion>
           <AccordionItem  key={0} title="Category">
-            <div className="flex flex-col gap-2">
+            <div  className="flex flex-col gap-2">
             {
               allCategories.map((category) => (
-                <Checkbox color="secondary" key={category} title={category}>
+                <Checkbox onClick={()=> selectCategoryFC(category)} isSelected={reduxCategories.includes(category) ? true : false} value={category}  color="secondary" key={category} title={category}>
                    {category.charAt(0).toUpperCase() + category.slice(1)}
               </Checkbox>
                 ))

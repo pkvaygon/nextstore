@@ -1,20 +1,23 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import cartSliceReducer from '@/storage/cartSlice';
 import storage from 'redux-persist/lib/storage';
 import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistReducer, persistStore } from 'redux-persist';
+import filterSliceReducer from './filterSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
+  version: 1
 };
-
-const persistedReducer = persistReducer(persistConfig, cartSliceReducer);
+const rootReducer = combineReducers({
+  cart: cartSliceReducer,
+  filter: filterSliceReducer,
+});
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const makeStore = () => {
   const store = configureStore({
-    reducer: {
-      cart: persistedReducer,
-    },
+    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

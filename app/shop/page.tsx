@@ -6,6 +6,7 @@ import SidebarDrawer from "@/components/shop/SidebarDrawer";
 import FilterWrapper from "@/components/shop/FilterWrapper";
 import ShopCards from "@/components/shop/ProductSection/ShopCards";
 import { selectSortOption } from "@/localdata";
+import  products  from '@/nextstore.shoes.json';
 
 
 export default  function Shop() {
@@ -16,7 +17,7 @@ export default  function Shop() {
     <div className="w-full h-auto px-2 lg:px-6">
     <div className="flex gap-x-6">
       <SidebarDrawer isOpen={isOpen} onOpenChange={onOpenChange}>
-        <FilterWrapper/>
+          <FilterWrapper />
       </SidebarDrawer>
       <div className="w-full flex-1 flex-col">
         <section className="relative z-20 flex flex-col gap-2 rounded-medium bg-default-50 px-4 pb-3 pt-2 md:pt-3">

@@ -35,8 +35,8 @@ export type LoginModalProps = {
     gender: string;
     category: string;
     brand: string;
-    rating: number[]; // You may need to define the structure of rating
-    reviews: any[]; // You may need to define the structure of reviews
+    rating: number[];
+    reviews: any[]; 
    colors: ProductColorsProps[];
    quantity?: number;
   }
