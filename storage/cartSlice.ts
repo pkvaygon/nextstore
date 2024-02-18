@@ -1,26 +1,52 @@
 // cartSlice.ts
-import { ProductItemProps } from '@/types';
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+"use client";
+import { ProductItemProps } from "@/types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+type ReduxColorProps = {
+  color: string,
+  color2: string,
+  hex: string,
+  hex2: string
+}
+export interface ReduxItemsProps{
+  _id: {
+    $oid: string;
+  };
+  label: string;
+  sizes: string[],
+  price: number,
+  colors: ReduxColorProps[]
+  image: string;
+  quantity: number;
+}
 interface CartState {
-    items: ProductItemProps[];
-    cs: number
+  items: ReduxItemsProps[];
 }
 
 const initialState: CartState = {
-    items: [],
-    cs: 0
+  items: [],
 };
 
 const cartSlice = createSlice({
-  name: 'cart',
+  name: "cart",
   initialState,
-    reducers: {
-        test: (state) => {
-            state.cs += 1; // Обновляем cs на 1
-          }
+  reducers: {
+    addToCart: (state, action: PayloadAction<ReduxItemsProps>) => {
+      const newItem = action.payload;
+      const existingItem = state.items.find(
+        (item) => newItem._id.$oid === item._id.$oid
+      );
+      if (existingItem) {
+          existingItem.quantity += 1;
+        } 
+       else {
+        state.items.push({...newItem, quantity: 1,});
+      }
+    },
   },
 });
 
-export const {test} = cartSlice.actions;
+// Export the actions properly
+export const { addToCart } = cartSlice.actions;
 export default cartSlice.reducer;

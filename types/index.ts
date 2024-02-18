@@ -4,24 +4,7 @@ export interface NavLinkProps{
     label: string,
     href: string
 }
-export type ProductItem = {
-    id: string;
-    name: string;
-    href: string;
-    price: number;
-    color: string;
-    size: string;
-    isNew?: boolean;
-    rating?: number;
-    availableColors?: ProductListItemColor[];
-    ratingCount?: number;
-    description?: string;
-    imageSrc: string;
-};
-export type ProductListItemColor = {
-    name: string;
-    hex: string;
-};
+
 export type LoginModalProps = {
     isOpen: boolean,
     onClose: ()=> void,
@@ -54,5 +37,6 @@ export type LoginModalProps = {
     brand: string;
     rating: number[]; // You may need to define the structure of rating
     reviews: any[]; // You may need to define the structure of reviews
-    colors: ProductColorsProps[];
+   colors: ProductColorsProps[];
+   quantity?: number;
   }

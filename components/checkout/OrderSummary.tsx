@@ -3,17 +3,18 @@
 
 import React from "react";
 import {Button, Divider, Input} from "@nextui-org/react";
-import OrderSummaryItem, { OrderSummaryItemType } from "./OrderSummaryItem";
+import OrderSummaryItem from "./OrderSummaryItem";
+import { ReduxItemsProps } from "@/storage/cartSlice";
 
 
 export type OrderSummaryProps = React.HTMLAttributes<HTMLDivElement> & {
   hideTitle?: boolean;
-  items: OrderSummaryItemType[];
+  items: ReduxItemsProps[];
 };
 
-const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
-  ({hideTitle, items, ...props}, ref) => (
-    <div ref={ref} {...props}>
+export default function OrderSummary({ hideTitle, items, ...props }: OrderSummaryProps) {
+  return (
+    <div {...props}>
       {!hideTitle && (
         <>
           <h2 className="font-medium text-default-500">Your Order</h2>
@@ -21,7 +22,11 @@ const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
         </>
       )}
       <h3 className="sr-only">Items in your cart</h3>
-      <ul>{items?.map((item) => <OrderSummaryItem key={item.id} {...item} />)}</ul>
+      <ul>
+        {items?.map((item) => (
+          <OrderSummaryItem item={item} key={item._id.$oid} />
+        ))}
+      </ul>
       <div>
         <form className="mb-4 mt-6 flex items-end gap-2" onSubmit={(e) => e.preventDefault()}>
           <Input
@@ -62,9 +67,5 @@ const OrderSummary = React.forwardRef<HTMLDivElement, OrderSummaryProps>(
         </dl>
       </div>
     </div>
-  ),
-);
-
-OrderSummary.displayName = "OrderSummary";
-
-export default OrderSummary;
+  );
+}

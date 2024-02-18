@@ -19,15 +19,11 @@ import {AcmeLogo} from "@/svg";
 import OrderSummary from "@/components/checkout/OrderSummary";
 import ShippingForm from "@/components/checkout/Shipping-form";
 import PaymentForm from "@/components/checkout/Payment-form";
-// import ShippingForm from "./shipping-form";
-// import OrderSummary from "./order-summary";
-// import cartItems from "./cart-items";
-// import PaymentForm from "./payment-form";
-// import PaymentMethodRadio from "./payment-method-radio";
+import { useAppSelector } from "@/storage/redux-hooks";
 
-export default function Component() {
+export default function CheckoutPage() {
   const [[page, direction], setPage] = React.useState([0, 0]);
-
+  const cartItems = useAppSelector(state=> state.cart.items)
   const variants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 20 : -20,
@@ -83,27 +79,13 @@ export default function Component() {
       base: "data-[selected=true]:border-foreground",
       control: "bg-foreground",
     };
-    const cartItems = [
-      {
-        id: "1",
-        name: "Training shoes",
-        href: "#",
-        price: 49.99,
-        color: "black",
-        size: "42",
-        quantity: 1,
-        imageSrc: "https://nextuipro.nyc3.cdn.digitaloceanspaces.com/components-images/shoes/1.png",
-      },
-    ]
     switch (page) {
       case 0:
         return <OrderSummary hideTitle items={cartItems} />;
-            // return <div>Order Summary</div>
       case 1:
         return (
           <div className="mt-4 flex flex-col gap-6">
                 <ShippingForm hideTitle variant="bordered" />
-                {/* <div>Shipping Form</div> */}
           </div>
         );
       case 2:
@@ -118,7 +100,7 @@ export default function Component() {
       default:
         return null;
     }
-  }, [page]);
+  }, [page,cartItems]);
 
   return (
     <section className="flex h-auto w-full gap-8 text-white">

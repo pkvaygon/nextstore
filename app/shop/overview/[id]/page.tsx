@@ -16,6 +16,9 @@ import {Icon} from "@iconify/react";
 import {cn} from "@/utils";
 import concret from '@/nextstore.shoes.json'
 import { shippingAndReturns } from "@/localdata";
+import { useAppDispatch } from "@/storage/redux-hooks";
+import { ReduxItemsProps, addToCart } from "@/storage/cartSlice";
+import { ProductItemProps } from "@/types";
 
 interface ParamsProps{
     params: {
@@ -24,11 +27,13 @@ interface ParamsProps{
 }
 
 export default function OverviewProduct({ params }:ParamsProps) {
-    const id = params.id
+  const id = params.id
+  const dispatch = useAppDispatch()
     const product =concret.find(product => product._id.$oid === id)
   const [isStarred, setIsStarred] = React.useState(false);
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
   const [currentColorIndex, setCurrentColorIndex] = React.useState(0)
+  const [selectedSizes, setSelectedSizes] = React.useState<Set<string>>(new Set());
         const newRating =  [1,2,3,4,5]
     if (!product) {
         return <div>Product not found</div>;
@@ -39,6 +44,39 @@ export default function OverviewProduct({ params }:ParamsProps) {
   const handleColorClick = (index: number) => {
   setCurrentColorIndex(index)
   }
+  const convertToReduxFormat = (item: ProductItemProps): ReduxItemsProps => {
+    return {
+      _id: item._id,
+      label: item.label,
+      sizes: Array.from(selectedSizes),
+      price: item.price,
+      colors: item.colors.map((color) => ({
+        color: color.color,
+        color2: color.color2,
+        hex: color.hex,
+        hex2: color.hex2,
+      })),
+      image: item.colors[0].images[0], // Assuming you want to take the first image from the first color
+      quantity: item.quantity || 1,
+    };
+  };
+  const handleAddCart = (item: ProductItemProps) => {
+    const reduxItem = convertToReduxFormat(item);
+    dispatch(addToCart(reduxItem));
+  };
+  
+
+  const handleSizeClick = (size: string) => {
+    setSelectedSizes((prevSelectedSizes) => {
+      const newSelectedSizes = new Set(prevSelectedSizes);
+      if (newSelectedSizes.has(size)) {
+        newSelectedSizes.delete(size);
+      } else {
+        newSelectedSizes.add(size);
+      }
+      return newSelectedSizes;
+    });
+  };
     return (
         <section className="container h-auto lg:h-auto overflow-hidden p-4">
       <div
@@ -141,7 +179,8 @@ export default function OverviewProduct({ params }:ParamsProps) {
                         radius="sm"
                         size="lg"
                         key={index}
-                        className={`text-foreground`}
+                        className={`text-foreground ${selectedSizes.has(size) ? 'bg-purple-500' : ''}`}
+                    onClick={() => handleSizeClick(size)}
                     >{size}</Chip>
                     ))                
             }                
@@ -183,11 +222,12 @@ export default function OverviewProduct({ params }:ParamsProps) {
                   </li>
                   ))
                   }
-</ul>
+                </ul>
               </AccordionItem>
           </Accordion>
           <div className="mt-2 flex gap-2">
-            <Button
+              <Button
+                onClick={()=> handleAddCart(product)}
               fullWidth
               className="text-medium font-medium"
               color="primary"
