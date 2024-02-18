@@ -7,8 +7,10 @@ import { usePathname } from 'next/navigation';
 import LoginModal from "./LoginComponents/LogInModal";
 import { useUser } from "@/providers/Context";
 import {signOut, useSession } from "next-auth/react";
+import { useAppSelector } from "@/storage/redux-hooks";
 export default function Header() {
-    const pathname = usePathname()
+  const pathname = usePathname()
+  const itemsQuantity = useAppSelector(state => state.cart.items)
     const { user, setUser } = useUser();
   const { data: session } = useSession();
   React.useEffect(() => {
@@ -68,7 +70,7 @@ export default function Header() {
               {
             session?.user ?
               <>
-                  <Badge placement="bottom-right" className="max-sm:hidden" isOneChar shape="circle" showOutline={false} color="secondary" content={0} size="lg">
+                  <Badge placement="bottom-right" className="max-sm:hidden" isOneChar shape="circle" showOutline={false} color="secondary" content={itemsQuantity.length} size="lg">
                 <Button className="max-sm:hidden"  color="default">
                     <ShoppingCart width={24} height={24} className="" />
                           </Button>
@@ -116,7 +118,7 @@ export default function Header() {
                   <AcmeLogo/>
               </div>
               <Button className="w-full" isDisabled={user ? false : true} color="default">
-              <Badge placement="bottom-right"  isOneChar shape="circle" showOutline={false} color="secondary" content={0} size="sm">
+              <Badge placement="bottom-right"  isOneChar shape="circle" showOutline={false} color="secondary" content={itemsQuantity.length} size="sm">
                   <ShoppingCart width={24} height={24}/>
                           </Badge>
                           </Button>

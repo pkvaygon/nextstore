@@ -56,7 +56,7 @@ export default function OverviewProduct({ params }:ParamsProps) {
         hex: color.hex,
         hex2: color.hex2,
       })),
-      image: item.colors[0].images[0], // Assuming you want to take the first image from the first color
+      image: item.colors[0].images[0],
       quantity: item.quantity || 1,
     };
   };
@@ -65,7 +65,6 @@ export default function OverviewProduct({ params }:ParamsProps) {
     dispatch(addToCart(reduxItem));
   };
   
-
   const handleSizeClick = (size: string) => {
     setSelectedSizes((prevSelectedSizes) => {
       const newSelectedSizes = new Set(prevSelectedSizes);
