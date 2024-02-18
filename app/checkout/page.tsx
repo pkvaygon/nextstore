@@ -21,9 +21,11 @@ import ShippingForm from "@/components/checkout/Shipping-form";
 import PaymentForm from "@/components/checkout/Payment-form";
 import { useAppSelector } from "@/storage/redux-hooks";
 
+
 export default function CheckoutPage() {
   const [[page, direction], setPage] = React.useState([0, 0]);
-  const cartItems = useAppSelector(state=> state.cart.items)
+  const cartItems = useAppSelector(state => state.cart.items)
+  const totalPrice = useAppSelector(state => state.cart.totalPrice)
   const variants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 20 : -20,
@@ -81,7 +83,7 @@ export default function CheckoutPage() {
     };
     switch (page) {
       case 0:
-        return <OrderSummary hideTitle items={cartItems} />;
+        return <OrderSummary totalPrice={totalPrice} hideTitle items={cartItems} />;
       case 1:
         return (
           <div className="mt-4 flex flex-col gap-6">
@@ -100,7 +102,7 @@ export default function CheckoutPage() {
       default:
         return null;
     }
-  }, [page,cartItems]);
+  }, [page,cartItems,totalPrice]);
 
   return (
     <section className="flex h-auto w-full gap-8 text-white">
@@ -113,10 +115,10 @@ export default function CheckoutPage() {
           </div>
           <div className="flex items-center gap-2">
             <p>
-              <span className="text-small font-semibold text-default-700">$172.96</span>
-              <span className="ml-1 text-small text-default-500">(3 items)</span>
+              <span className="text-small font-semibold text-default-700">${totalPrice.toFixed(2)}</span>
+              <span className="ml-1 text-small text-default-500">({cartItems.length})</span>
             </p>
-            <Badge content="4" showOutline={false}>
+            <Badge color="secondary" content={cartItems.length} showOutline={false}>
               <Icon icon="solar:cart-check-outline" width={28} />
             </Badge>
           </div>

@@ -22,10 +22,12 @@ export interface ReduxItemsProps{
 }
 interface CartState {
   items: ReduxItemsProps[];
+  totalPrice: number;
 }
 
 const initialState: CartState = {
   items: [],
+  totalPrice: 0
 };
 
 const cartSlice = createSlice({
@@ -43,10 +45,21 @@ const cartSlice = createSlice({
        else {
         state.items.push({...newItem, quantity: 1,});
       }
+      state.totalPrice += newItem.price;
+    },
+    removeFromCart: (state, action: PayloadAction<string>) => {
+      const idToRemove = action.payload;
+      const indexToRemove = state.items.findIndex(
+        (item) => item._id.$oid === idToRemove
+      );
+      if (indexToRemove !== -1) {
+        const removedItem = state.items[indexToRemove];
+        state.totalPrice -= removedItem.price * removedItem.quantity;
+        state.items.splice(indexToRemove, 1);
+      }
     },
   },
 });
 
-// Export the actions properly
-export const { addToCart } = cartSlice.actions;
+export const { addToCart,removeFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

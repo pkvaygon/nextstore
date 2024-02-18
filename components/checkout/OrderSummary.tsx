@@ -10,9 +10,10 @@ import { ReduxItemsProps } from "@/storage/cartSlice";
 export type OrderSummaryProps = React.HTMLAttributes<HTMLDivElement> & {
   hideTitle?: boolean;
   items: ReduxItemsProps[];
+  totalPrice: number
 };
 
-export default function OrderSummary({ hideTitle, items, ...props }: OrderSummaryProps) {
+export default function OrderSummary({totalPrice, hideTitle, items, ...props }: OrderSummaryProps) {
   return (
     <div {...props}>
       {!hideTitle && (
@@ -45,7 +46,7 @@ export default function OrderSummary({ hideTitle, items, ...props }: OrderSummar
         <dl className="flex flex-col gap-4 py-4">
           <div className="flex justify-between">
             <dt className="text-small text-default-500">Subtotal</dt>
-            <dd className="text-small font-semibold text-default-700">$159.96</dd>
+            <dd className="text-small font-semibold text-default-700">${totalPrice.toFixed(2)}</dd>
           </div>
           <div className="flex justify-between">
             <dt className="text-small text-default-500">Delivery</dt>
@@ -62,7 +63,7 @@ export default function OrderSummary({ hideTitle, items, ...props }: OrderSummar
           <Divider />
           <div className="flex justify-between">
             <dt className="text-small font-semibold text-default-500">Total</dt>
-            <dd className="text-small font-semibold text-default-700">$172.96</dd>
+            <dd className="text-small font-semibold text-default-700">${totalPrice.toFixed(2)}</dd>
           </div>
         </dl>
       </div>

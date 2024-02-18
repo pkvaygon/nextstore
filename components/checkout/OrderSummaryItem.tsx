@@ -5,13 +5,18 @@ import {Button, Image, Link, Tooltip} from "@nextui-org/react";
 import {Icon} from "@iconify/react";
 
 import {cn} from "@/utils";
-import { ReduxItemsProps } from "@/storage/cartSlice";
+import { ReduxItemsProps, removeFromCart } from "@/storage/cartSlice";
+import { useAppDispatch } from "@/storage/redux-hooks";
 
 type OrderSummaryItemProps = {
   className?: string,
   item: ReduxItemsProps
 }
-export default function OrderSummaryItem({className, item}: OrderSummaryItemProps) {
+export default function OrderSummaryItem({ className, item }: OrderSummaryItemProps) {
+  const dispatch = useAppDispatch()
+  const handleRemoveItem = (id: string)=>{
+  dispatch(removeFromCart(id))
+  }
   return(
   <li
     className={cn("flex items-center gap-x-4 border-b-small border-divider py-4", className)}
@@ -47,7 +52,7 @@ export default function OrderSummaryItem({className, item}: OrderSummaryItemProp
       content="Remove"
       placement="top"
     >
-      <Button isIconOnly className="h-7 w-7 min-w-[1.5rem]" radius="full" variant="flat">
+      <Button onClick={()=>handleRemoveItem(item._id.$oid)} isIconOnly className="h-7 w-7 min-w-[1.5rem]" radius="full" variant="flat">
         <Icon icon="lucide:x" width={14} />
       </Button>
     </Tooltip>
