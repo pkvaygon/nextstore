@@ -61,16 +61,24 @@ export const filterSlice = createSlice(({
               state.selectedCategories.push(action.payload);
           }
           },
-          reduxSelectedGenders: (state, action: PayloadAction<string[]>) => {
-            state.selectedGenders = action.payload;
+          reduxSelectedGenders: (state, action: PayloadAction<string>) => {
+            if (state.selectedGenders.includes(action.payload)) {
+              state.selectedGenders = state.selectedGenders.filter(gender => gender !== action.payload);
+          } else {
+              state.selectedGenders.push(action.payload);
+          }
           },
-          reduxSelectedBrands: (state, action: PayloadAction<string[]>) => {
-            state.selectedBrands = action.payload;
+          reduxSelectedBrands: (state, action: PayloadAction<string>) => {
+            if (state.selectedBrands.includes(action.payload)) {
+              state.selectedBrands = state.selectedBrands.filter(brand => brand !== action.payload);
+          } else {
+              state.selectedBrands.push(action.payload);
+          }
           },
     }
 
 
 }))
 
-export const { reduxSelectedColors,reduxSelectedSizes,reduxPriceRange,reduxSelectedCategories } = filterSlice.actions;
+export const { reduxSelectedColors,reduxSelectedSizes,reduxPriceRange,reduxSelectedCategories,reduxSelectedGenders,reduxSelectedBrands } = filterSlice.actions;
 export default filterSlice.reducer;

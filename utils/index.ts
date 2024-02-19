@@ -38,4 +38,6 @@ export const allGenders: string[] = Array.from(
 )
 export const allBrands: string[] = Array.from(
   new Set(products.flatMap((product)=> product.brand))
-  )
+)
+
+

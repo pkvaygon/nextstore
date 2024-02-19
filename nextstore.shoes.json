@@ -50,8 +50,8 @@
     {
       "color": "White",
       "color2": "Black",
-      "hex": "#000000",
-      "hex2": "#FFFFFF",
+      "hex": "#FFFFFF",
+      "hex2": "#000000",
       "images": [
         "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707888272/nextstore/shoes/shoe1/whiteblack/3026624-100_DEFAULT_dpymip.jpg",
         "https://res.cloudinary.com/dxvf93ovn/image/upload/v1707888227/nextstore/shoes/shoe1/whiteblack/3026624-100_A_hhfdkt.jpg",

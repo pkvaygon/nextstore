@@ -1,6 +1,6 @@
 "use client";
 
-import { SelectedColorProps, reduxSelectedColors,reduxSelectedSizes,reduxPriceRange,reduxSelectedCategories } from "@/storage/filterSlice";
+import { SelectedColorProps, reduxSelectedColors,reduxSelectedSizes,reduxPriceRange,reduxSelectedCategories, reduxSelectedGenders, reduxSelectedBrands } from "@/storage/filterSlice";
 import { useAppDispatch, useAppSelector } from "@/storage/redux-hooks";
 import  products  from '@/nextstore.shoes.json';
 import React from "react";
@@ -32,6 +32,12 @@ const reduxBrands = useAppSelector(state=> state.filter.selectedBrands)
     function selectCategoryFC(category: string) {
     dispatch(reduxSelectedCategories(category))
     }
+    function selectGenderFC(gender: string) {
+    dispatch(reduxSelectedGenders(gender))
+    }
+    function selectBrandFC(brand: string) {
+    dispatch(reduxSelectedBrands(brand))
+    }
     return {
         minPrice,
         maxPrice,
@@ -43,7 +49,9 @@ const reduxBrands = useAppSelector(state=> state.filter.selectedBrands)
         selectColorFC,
         selectSizeFC,
         selectPriceRangeFC,
-        selectCategoryFC
+        selectCategoryFC,
+        selectGenderFC,
+        selectBrandFC
     }
     
 }

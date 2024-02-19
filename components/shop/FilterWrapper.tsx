@@ -6,8 +6,11 @@ import { allColors, allSizes,allCategories,allGenders,allBrands } from "@/utils"
 import { useReduxFunction } from "@/utils/filter-functions";
 import { ProductColorsProps, ProductItemProps } from "@/types";
 export default function FilterWrapper() {
-  type ChangeHandler = (value: string[]) => void;
-  const { minPrice, maxPrice,selectColorFC, selectSizeFC, reduxSizes, reduxColors,selectPriceRangeFC,reduxCategories,selectCategoryFC } = useReduxFunction()
+  const { minPrice, maxPrice, selectColorFC,
+    selectSizeFC, reduxSizes, reduxColors,
+    selectPriceRangeFC, reduxCategories,
+    reduxGenders,reduxBrands,
+    selectCategoryFC,selectGenderFC, selectBrandFC } = useReduxFunction()
     return (
         <section className="flex flex-col gap-2">
         <div className=" flex flex-col gap-2">
@@ -63,7 +66,7 @@ export default function FilterWrapper() {
             <div  className="flex flex-col gap-2">
             {
               allCategories.map((category) => (
-                <Checkbox onClick={()=> selectCategoryFC(category)} isSelected={reduxCategories.includes(category) ? true : false} value={category}  color="secondary" key={category} title={category}>
+                <Checkbox onClick={()=> selectCategoryFC(category)} isSelected={reduxCategories.includes(category)} value={category}  color="secondary" key={category} title={category}>
                    {category.charAt(0).toUpperCase() + category.slice(1)}
               </Checkbox>
                 ))
@@ -76,7 +79,9 @@ export default function FilterWrapper() {
             <div className="flex flex-col gap-2">
             {
               allGenders.map((gender) => (
-                <Checkbox color="secondary" key={gender} title={gender}>
+                <Checkbox
+                isSelected={reduxGenders.includes(gender)}
+                  onClick={() => selectGenderFC(gender)} color="secondary" key={gender} title={gender}>
                   {gender.charAt(0).toUpperCase() + gender.slice(1)}
               </Checkbox>
                 ))
@@ -89,7 +94,9 @@ export default function FilterWrapper() {
             <div className="flex flex-col gap-2">
             {
               allBrands.map((brand) => (
-                <Checkbox color="secondary" key={brand} title={brand}>
+                <Checkbox
+                isSelected={reduxBrands.includes(brand)}
+                  onClick={() => selectBrandFC(brand)} color="secondary" key={brand} title={brand}>
                   {brand.charAt(0).toUpperCase() + brand.slice(1)}
               </Checkbox>
                 ))
